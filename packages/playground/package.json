@@ -1,0 +1,29 @@
+{
+  "name": "playground",
+  "version": "0.0.0",
+  "private": true,
+  "description": "> TODO: description",
+  "author": "Udi Talias <udi.talias@gmail.com>",
+  "homepage": "https://github.com/quickey/quickey#readme",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quickey/quickey.git"
+  },
+  "dependencies": {
+    "@quickey/core": "0.0.0",
+    "@quickey/react": "0.0.0",
+    "@quickey/vue": "0.0.0"
+  },
+  "scripts": {
+    "start": "ts-node src/index.ts"
+  },
+  "bugs": {
+    "url": "https://github.com/quickey/quickey/issues"
+  },
+  "devDependencies": {
+    "ts-node": "^7.0.1",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  }
+}
