@@ -4,7 +4,7 @@
   "scripts": {
     "start": "lerna run tsc:watch --parallel",
     "test": "jest",
-    "test:watch": "jest --watch",
+    "test:watch": "jest --watch --coverage",
     "publish": "lerna run tsc && npm test && lerna publish"
   },
   "devDependencies": {

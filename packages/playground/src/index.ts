@@ -11,7 +11,7 @@ const quickey = createQuickey()
     })
     .addAction({
         keys: "I > D > D > Q > D",
-        strict: true,
+        strict: false,
         delay: 500,
         callback: () => {
             console.log("GOD Mode!")
