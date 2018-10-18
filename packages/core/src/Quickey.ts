@@ -19,11 +19,11 @@ export interface IQuickeyOptions {
 export default class Quickey implements IKeyBinderDelegate {
 
     private _keyBinder: KeyBinder;
-    private _callbacks: { [index: string]: ActionCallback; }
+    private _callbacks: Map<string, ActionCallback>;
 
     constructor(options: IQuickeyOptions) {
         options.actions = options.actions || [];
-        this._callbacks = {};
+        this._callbacks = new Map();
         this._keyBinder = new KeyBinder();
         this._keyBinder.delegate = this;
 
@@ -74,16 +74,16 @@ export default class Quickey implements IKeyBinderDelegate {
      */
     public didMatchFound(binder: KeyBinder, combinations: IKeyBindCombination[]) {
         for (const combination of combinations) {
-            const action = this._callbacks[combination.id];
+            const action = this._callbacks.get(combination.id);
             action && action(combination);
         }
     }
 
     private _addActionListener(actionId: string, callback: ActionCallback) {
-        this._callbacks[actionId] = callback;
+        this._callbacks.set(actionId, callback);
     }
 
     private _removeActionListener(actionId: string) {
-        delete this._callbacks[actionId];
+        this._callbacks.delete(actionId);
     }
 }

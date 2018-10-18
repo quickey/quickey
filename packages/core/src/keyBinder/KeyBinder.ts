@@ -9,9 +9,9 @@ export interface IKeyBinderDelegate {
 }
 
 export default class KeyBinder {
-    private readonly _combinations: IKeyBindCombination[];
     private _isRecording: boolean;
     private _keysRecord: Map<string, IKeyRecordParams>;
+    private readonly _combinations: Map<string, IKeyBindCombination>;
     public delegate: IKeyBinderDelegate;
 
     constructor(options: IKeyBinderOptions = {}) {
@@ -21,9 +21,12 @@ export default class KeyBinder {
         } = options;
 
         this._keysRecord = new Map();
+        this._combinations = new Map();
         this._onDocumentKeyDown = this._onDocumentKeyDown.bind(this);
         this._onDocumentKeyUp = this._onDocumentKeyUp.bind(this);
-        this._combinations = combinations.map(prepareCombination);
+        this.add = this.add.bind(this);
+
+        combinations.map(this.add);
 
         if (autoPlay) {
             this.record();
@@ -47,23 +50,16 @@ export default class KeyBinder {
     }
 
     public add(combination: IKeyBindCombination) {
-        this._combinations.push(prepareCombination(combination));
+        combination = prepareCombination(combination);
+        this._combinations.set(combination.id, combination);
     }
 
-    public remove(combinationOrCombinationId: IKeyBindCombination | string) {
-        if (typeof combinationOrCombinationId === "string") {
-            combinationOrCombinationId = this._getCombinationById(combinationOrCombinationId);
-        }
-
-        this._combinations.splice(this._combinations.indexOf(combinationOrCombinationId), 1);
+    public remove(combinationId: string) {
+        this._combinations.delete(combinationId)
     }
 
     public removeAll() {
-        this._combinations.length = 0;
-    }
-
-    private _getCombinationById(combinationId: string) {
-        return this._combinations.find((combination) => combination.id === combinationId);
+        this._combinations.clear();
     }
 
     private _recordKey(e: KeyboardEvent) {
@@ -88,8 +84,9 @@ export default class KeyBinder {
         this._recordKey(e);
 
         const matches: IKeyBindCombination[] =
-            this._combinations.filter((combination: IKeyBindCombination) =>
-                this._checkCombination(e, combination));
+            Array.from(this._combinations.entries())
+                .map(([key, combination]) => combination)
+                .filter((combination) => this._checkCombination(e, combination));
 
         if (matches.length && this.delegate) {
             this.delegate.didMatchFound(this, matches);
