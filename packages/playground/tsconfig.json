@@ -1,0 +1,40 @@
+{
+    "version": "2.6.2",
+    "compilerOptions": {
+        "baseUrl": "./src",
+        "target": "es5",
+        "module": "esnext",
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "importHelpers": true,
+        "experimentalDecorators": true,
+        "preserveConstEnums": true,
+        "sourceMap": true,
+        "moduleResolution": "node",
+        "downlevelIteration": true,
+        "lib": [
+            "es6",
+            "es7",
+            "dom"
+        ],
+        "typeRoots": [
+            "./node_modules/@types"
+        ],
+        "types": [
+            "node",
+            "webpack-env"
+        ],
+        "jsx": "react",
+        "noUnusedLocals": false,
+        "strictNullChecks": false,
+        "removeComments": false
+    },
+    "include": [
+        "./**/*.ts",
+        "./**/*.tsx"
+    ],
+    "files": [
+        "./typings.d.ts"
+    ],
+    "compileOnSave": false
+}
