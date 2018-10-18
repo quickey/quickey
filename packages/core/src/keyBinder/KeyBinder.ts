@@ -1,4 +1,4 @@
-import { every, lc } from "shared/utils";
+import { every, lc } from "shared/lib/utils";
 import { CombinationType } from "./enums";
 import { IKeyBindCombination, IKeyBinderOptions, IKeyRecordParams } from "./interfaces";
 import { SPECIAL_EVENT_KEY_MAP } from "./constants";

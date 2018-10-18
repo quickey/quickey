@@ -6,13 +6,17 @@
   "author": "Udi Talias <udi.talias@gmail.com>",
   "homepage": "https://github.com/quickey/quickey#readme",
   "license": "MIT",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/quickey/quickey.git"
   },
   "scripts": {
+    "tsc": "tsc",
+    "tsc:watch": "tsc -w",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "clean": "rimraf lib/"
   },
   "bugs": {
     "url": "https://github.com/quickey/quickey/issues"

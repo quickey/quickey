@@ -1,4 +1,4 @@
-import { guid } from "shared/utils";
+import { guid } from "shared/lib/utils";
 import { IKeyBindCombination } from "./interfaces";
 import { CombinationType } from "./enums";
 

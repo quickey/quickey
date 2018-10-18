@@ -1,4 +1,4 @@
-import { guid } from "shared/utils";
+import { guid } from "shared/lib/utils";
 import KeyBinder, { IKeyBinderDelegate, IKeyBindCombination } from "./keyBinder";
 
 export type ActionCallback = (combination?: IKeyBindCombination) => void;
