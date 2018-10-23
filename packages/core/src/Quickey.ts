@@ -1,5 +1,5 @@
-import { guid } from "shared/lib/utils";
-import KeyBinder, { IKeyBinderDelegate, IKeyBindCombination } from "./keyBinder";
+import { guid } from "@quickey/shared/lib/utils";
+import KeyBinder, { IKeyBinderDelegate, IKeyBindCombination } from "@quickey/binder";
 
 export type ActionCallback = (combination?: IKeyBindCombination) => void;
 export type OnDestroyCallback = (quickey: Quickey) => void;
@@ -21,7 +21,6 @@ export interface IQuickeyOptions {
 }
 
 export default class Quickey implements IKeyBinderDelegate {
-
     private _keyBinder: KeyBinder;
     private _callbacks: Map<string, ActionCallback>;
     private _onDestroy: OnDestroyCallback;
@@ -60,7 +59,7 @@ export default class Quickey implements IKeyBinderDelegate {
 
             this._addActionListener(id, action.callback);
 
-            this._keyBinder.add({
+            this._keyBinder.bind({
                 id,
                 keys,
                 delay,
@@ -72,7 +71,7 @@ export default class Quickey implements IKeyBinderDelegate {
     }
 
     public play() {
-        this._keyBinder.record();
+        this._keyBinder.play();
     }
 
     public pause() {
@@ -86,7 +85,7 @@ export default class Quickey implements IKeyBinderDelegate {
 
     public removeAction(actionId: string) {
         this._removeActionListener(actionId);
-        this._keyBinder.remove(actionId);
+        this._keyBinder.unbind(actionId);
 
         return this;
     }

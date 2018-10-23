@@ -26,7 +26,10 @@ module.exports = {
             use: [{
                 loader: 'ts-loader',
                 options: {
-                    configFile: "../tsconfig.json"
+                    configFile: "../tsconfig.json",
+                    compilerOptions: {
+                        target: "es5"
+                    }
                 }
             }],
             exclude: /node_modules/

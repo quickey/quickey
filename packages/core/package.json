@@ -28,11 +28,11 @@
     "tsc:watch": "tsc -w",
     "test": "jest",
     "test:watch": "jest --watch",
-    "clean": "rimraf lib/",
     "build": "NODE_ENV=production webpack --progress"
   },
   "dependencies": {
-    "shared": "0.0.0"
+    "@quickey/binder": "0.0.0",
+    "@quickey/shared": "0.0.0"
   },
   "bugs": {
     "url": "https://github.com/quickey/quickey/issues"

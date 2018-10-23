@@ -2,10 +2,11 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "start": "lerna run tsc:watch --parallel",
     "test": "jest",
     "test:watch": "jest --watch --coverage",
-    "publish": "lerna run tsc && lerna run build && npm test && lerna publish"
+    "release": "lerna run tsc && lerna run build && npm test && lerna publish",
+    "tsc:watch": "lerna run tsc:watch --parallel",
+    "clean": "lerna exec rimraf lib/"
   },
   "devDependencies": {
     "@types/jest": "^23.3.5",

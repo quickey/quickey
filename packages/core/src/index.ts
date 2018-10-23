@@ -9,7 +9,7 @@
                                |___/ 
 **************************************/
 
-import Quickey, { IQuickeyOptions, ActionCallback } from "./Quickey";
+import Quickey, { IQuickeyOptions, ActionCallback, OnDestroyCallback } from "./Quickey";
 
 const quickeys: Quickey[] = [
     /**
@@ -43,7 +43,7 @@ function createQuickey(options?: IQuickeyOptions | IQuickeyOptions[]): Quickey |
     }
 
     const qs = options.map((o: IQuickeyOptions) => new Quickey(createOptions(o)));
-    
+
     Array.prototype.push.apply(quickeys, qs);
 
     return qs;
@@ -52,5 +52,6 @@ function createQuickey(options?: IQuickeyOptions | IQuickeyOptions[]): Quickey |
 export {
     IQuickeyOptions,
     ActionCallback,
+    OnDestroyCallback,
     createQuickey
 };

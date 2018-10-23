@@ -1,12 +1,22 @@
 {
-  "name": "@quickey/shared",
+  "name": "@quickey/keyboard",
   "version": "0.0.0",
-  "private": true,
   "description": "> TODO: description",
   "author": "Udi Talias <udi.talias@gmail.com>",
   "homepage": "https://github.com/quickey/quickey#readme",
   "license": "MIT",
   "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/quickey/quickey.git"
@@ -15,17 +25,9 @@
     "tsc": "tsc",
     "tsc:watch": "tsc -w",
     "test": "jest",
-    "test:watch": "jest --watch",
-    "clean": "rimraf lib/"
+    "test:watch": "jest --watch"
   },
   "bugs": {
     "url": "https://github.com/quickey/quickey/issues"
-  },
-  "devDependencies": {
-    "@types/webpack-env": "^1.13.6",
-    "clean-webpack-plugin": "^0.1.19",
-    "html-webpack-plugin": "^3.2.0",
-    "ts-loader": "^5.2.2",
-    "webpack-dev-server": "^3.1.9"
   }
 }

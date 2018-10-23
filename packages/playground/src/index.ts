@@ -25,6 +25,13 @@ const quickey = createQuickey()
         }
     })
     .addAction({
+        keys: "Ctrl + +",
+        strict: true,
+        callback: () => {
+            console.log(`Give me some plus!`);
+        }
+    })
+    .addAction({
         id: "hello",
         keys: "Ctrl + H",
         strict: true,

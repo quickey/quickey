@@ -1,7 +1,7 @@
 'use strict';
 
-import KeyBinder from "../src/keyBinder";
-import { IKeyBindCombination } from "../src/keyBinder";
+import KeyBinder from "../src";
+import { IKeyBindCombination } from "../src";
 
 let keyBinder: KeyBinder;
 
@@ -28,7 +28,7 @@ describe('KeyBinder', () => {
                 didMatchFound: jest.fn((binder: KeyBinder, combinations: IKeyBindCombination[]) => { })
             };
 
-            keyBinder.add({
+            keyBinder.bind({
                 keys: "I > D > D > Q > D"
             });
 
@@ -47,7 +47,7 @@ describe('KeyBinder', () => {
                 didMatchFound: jest.fn((binder: KeyBinder, combinations: IKeyBindCombination[]) => { })
             };
 
-            keyBinder.add({
+            keyBinder.bind({
                 keys: "I > D > D > Q > D",
                 delay: 10
             });
@@ -77,7 +77,7 @@ describe('KeyBinder', () => {
                 didMatchFound: jest.fn((binder: KeyBinder, combinations: IKeyBindCombination[]) => { })
             };
 
-            keyBinder.add({
+            keyBinder.bind({
                 keys: "Ctrl + H"
             });
 
@@ -96,7 +96,7 @@ describe('KeyBinder', () => {
                 didMatchFound: jest.fn((binder: KeyBinder, combinations: IKeyBindCombination[]) => { })
             };
 
-            keyBinder.add({
+            keyBinder.bind({
                 keys: "Ctrl + H",
                 strict: true
             });

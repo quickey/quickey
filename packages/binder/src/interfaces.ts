@@ -15,8 +15,3 @@ export interface IKeyBinderOptions {
     combinations?: IKeyBindCombination[];
     autoPlay?: boolean;
 }
-
-export interface IKeyRecordParams {
-    key: string;
-    code: number;
-}
