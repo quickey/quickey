@@ -132,5 +132,6 @@ export default class KeyBinder {
 
     public destroy() {
         this.pause();
+        this.removeAll();
     }
 }

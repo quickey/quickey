@@ -4,7 +4,8 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch --coverage",
-    "release": "lerna run tsc && lerna run build && npm test && lerna publish",
+    "release": "npm run tsc && npm run build:umd && npm test && lerna publish",
+    "tsc": "lerna run tsc",
     "tsc:watch": "lerna run tsc:watch --parallel",
     "clean": "lerna exec rimraf lib/",
     "build:umd": "lerna run build:umd --stream --parallel"
