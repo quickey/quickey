@@ -1,5 +1,5 @@
 import { guid } from "@quickey/shared/lib/utils";
-import KeyBinder, { IKeyBinderDelegate, IKeyBindCombination } from "@quickey/binder";
+import { KeyBinder, IKeyBinderDelegate, IKeyBindCombination } from "@quickey/binder";
 
 export type ActionCallback = (combination?: IKeyBindCombination) => void;
 export type OnDestroyCallback = (quickey: Quickey) => void;

@@ -12,7 +12,8 @@
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "lib",
+    "umd"
   ],
   "publishConfig": {
     "access": "public"
@@ -25,7 +26,8 @@
     "tsc": "tsc",
     "tsc:watch": "tsc -w",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "build:umd": "webpack"
   },
   "dependencies": {
     "@quickey/keyboard": "0.0.0",

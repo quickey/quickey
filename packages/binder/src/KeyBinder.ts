@@ -1,4 +1,4 @@
-import keyboard, { IKeyboardInput } from "@quickey/keyboard";
+import { keyboard, IKeyboardInput } from "@quickey/keyboard";
 import { every, lc } from "@quickey/shared/lib/utils";
 import { CombinationType } from "./enums";
 import { IKeyBindCombination, IKeyBinderOptions } from "./interfaces";
