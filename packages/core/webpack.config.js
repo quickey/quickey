@@ -1,7 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
-const destinationDir = `./dist`;
+const destinationDir = `./umd`;
 const contextPath = path.join(__dirname, './src');
 
 module.exports = {

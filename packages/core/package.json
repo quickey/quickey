@@ -14,7 +14,7 @@
   },
   "files": [
     "lib",
-    "dist"
+    "umd"
   ],
   "publishConfig": {
     "access": "public"
