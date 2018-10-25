@@ -1,7 +1,6 @@
 'use strict';
 
 import { KeyBinder } from "../src";
-import { IKeyBindCombination } from "../src";
 
 let keyBinder: KeyBinder;
 

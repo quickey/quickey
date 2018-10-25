@@ -1,7 +1,7 @@
 import KeyboardEventReadStream from "./KeyboardEventReadStream";
 import { IKeyboardInput } from "./interfaces";
 
-class Keyboard {
+export default class Keyboard {
     private _keyDownStream: KeyboardEventReadStream;
     private _keyUpStream: KeyboardEventReadStream;
     private _activeKeyRecord: Map<string, IKeyboardInput>;
@@ -52,5 +52,3 @@ class Keyboard {
         this._activeKeyRecord.delete(input.key);
     }
 }
-
-export default new Keyboard();

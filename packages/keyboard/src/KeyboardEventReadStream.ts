@@ -28,10 +28,12 @@ export default class KeyboardEventReadStream {
 
     public pipe(targetStream: KeyboardEventWriteStream) {
         if (this._writers.indexOf(targetStream) > -1) {
-            return;
+            return this;
         }
 
         this._writers.push(targetStream);
+
+        return this;
     }
 
     public unpipe(targetStream: KeyboardEventWriteStream) {
@@ -40,6 +42,8 @@ export default class KeyboardEventReadStream {
         if (targetStreamLocation > -1) {
             this._writers.splice(targetStreamLocation, 1);
         }
+
+        return this;
     }
 
     private _onEvent = (e: KeyboardEvent) => {
