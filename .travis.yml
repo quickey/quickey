@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+- '8.9'
+before_script:
+- npm install --development
+- lerna bootstrap
+script:
+- npm run test
+
+after_success:
+notifications:
+  email:
+  - udi.talias@gmail.com
