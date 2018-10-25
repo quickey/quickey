@@ -1,10 +1,8 @@
 import Quickey from "../src/Quickey";
-import { keyboard } from "@quickey/keyboard";
 
 let quickey: Quickey;
 
 afterEach(() => {
-    keyboard.reset();
     quickey && quickey.destroy();
     quickey = null;
 });
