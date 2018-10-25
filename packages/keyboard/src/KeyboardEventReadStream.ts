@@ -1,8 +1,8 @@
 import { IKeyboardInput } from "./interfaces";
 
-export type KeyboardEventWriteStream = (e: IKeyboardInput) => void;
+export type KeyboardEventWriteStream = (e: IKeyboardInput) => boolean | void;
 
-const createInputWriteStream = (input: IKeyboardInput) => (stream: KeyboardEventWriteStream) => stream(input);
+const createInputWriteStream = (input: IKeyboardInput) => (stream: KeyboardEventWriteStream) => stream(input) === false;
 
 export default class KeyboardEventReadStream {
     private _isOpen: boolean;
@@ -26,16 +26,20 @@ export default class KeyboardEventReadStream {
         document.removeEventListener(this._event, this._onEvent);
     }
 
-    public pipe(source: KeyboardEventWriteStream) {
-        if (this._writers.indexOf(source) > -1) {
+    public pipe(targetStream: KeyboardEventWriteStream) {
+        if (this._writers.indexOf(targetStream) > -1) {
             return;
         }
 
-        this._writers.push(source);
+        this._writers.push(targetStream);
     }
 
-    public unpipe(source: KeyboardEventWriteStream) {
-        this._writers.splice(this._writers.indexOf(source), 1);
+    public unpipe(targetStream: KeyboardEventWriteStream) {
+        const targetStreamLocation = this._writers.indexOf(targetStream);
+
+        if (targetStreamLocation > -1) {
+            this._writers.splice(targetStreamLocation, 1);
+        }
     }
 
     private _onEvent = (e: KeyboardEvent) => {
@@ -48,6 +52,6 @@ export default class KeyboardEventReadStream {
             code: e.which
         });
 
-        this._writers.forEach(write);
+        this._writers.find(write);
     }
 }

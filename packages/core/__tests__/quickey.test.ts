@@ -1,8 +1,10 @@
 import Quickey from "../src/Quickey";
+import { keyboard } from "@quickey/keyboard";
 
 let quickey: Quickey;
 
 afterEach(() => {
+    keyboard.reset();
     quickey && quickey.destroy();
     quickey = null;
 });
@@ -63,8 +65,7 @@ describe('Quickey', () => {
         });
 
         [{ which: 17, key: "Control" }, { which: 18, key: "Alt" }, { which: 46, key: "Delete" }]
-            .map((eventParams) => document.dispatchEvent(new KeyboardEvent("keydown", eventParams as any)) && eventParams)
-            .map((eventParams) => document.dispatchEvent(new KeyboardEvent("keyup", eventParams as any)));
+            .map((eventParams) => document.dispatchEvent(new KeyboardEvent("keydown", eventParams as any)));
 
         expect(actionCallback).toHaveBeenCalledTimes(1);
     });

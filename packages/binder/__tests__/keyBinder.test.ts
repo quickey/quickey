@@ -1,6 +1,6 @@
 'use strict';
 
-import KeyBinder from "../src";
+import { KeyBinder } from "../src";
 import { IKeyBindCombination } from "../src";
 
 let keyBinder: KeyBinder;
@@ -25,7 +25,7 @@ describe('KeyBinder', () => {
             keyBinder = new KeyBinder();
 
             keyBinder.delegate = {
-                didMatchFound: jest.fn((binder: KeyBinder, combinations: IKeyBindCombination[]) => { })
+                didMatchFound: jest.fn()
             };
 
             keyBinder.bind({
@@ -44,7 +44,7 @@ describe('KeyBinder', () => {
             keyBinder = new KeyBinder();
 
             keyBinder.delegate = {
-                didMatchFound: jest.fn((binder: KeyBinder, combinations: IKeyBindCombination[]) => { })
+                didMatchFound: jest.fn()
             };
 
             keyBinder.bind({
@@ -74,7 +74,7 @@ describe('KeyBinder', () => {
             keyBinder = new KeyBinder();
 
             keyBinder.delegate = {
-                didMatchFound: jest.fn((binder: KeyBinder, combinations: IKeyBindCombination[]) => { })
+                didMatchFound: jest.fn()
             };
 
             keyBinder.bind({
@@ -93,7 +93,7 @@ describe('KeyBinder', () => {
             keyBinder = new KeyBinder();
 
             keyBinder.delegate = {
-                didMatchFound: jest.fn((binder: KeyBinder, combinations: IKeyBindCombination[]) => { })
+                didMatchFound: jest.fn()
             };
 
             keyBinder.bind({

@@ -7,6 +7,7 @@ class Keyboard {
     private _activeKeyRecord: Map<string, IKeyboardInput>;
 
     constructor() {
+        this._activeKeyRecord = new Map<string, IKeyboardInput>();
         this._keyDownStream = new KeyboardEventReadStream("keydown");
         this._keyUpStream = new KeyboardEventReadStream("keyup");
 
@@ -30,12 +31,20 @@ class Keyboard {
         return this._activeKeyRecord.has(key);
     }
 
+    public reset() {
+        this._activeKeyRecord.clear();
+    }
+
     public destroy() {
         this._keyDownStream.close();
         this._keyUpStream.close();
     }
 
     private _onKeyDown = (input: IKeyboardInput) => {
+        if (this.isKeyActive(input.key)) {
+            return false;
+        }
+
         this._activeKeyRecord.set(input.key, input);
     }
 

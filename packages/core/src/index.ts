@@ -9,7 +9,7 @@
                                |___/ 
 **************************************/
 
-import Quickey, { IQuickeyOptions, ActionCallback, OnDestroyCallback } from "./Quickey";
+import Quickey, { IQuickeyOptions, IQuickeyActionOptions, ActionCallback, OnDestroyCallback } from "./Quickey";
 
 const quickeys: Quickey[] = [
     /**
@@ -22,7 +22,12 @@ function createOptions(o: IQuickeyOptions = {}): IQuickeyOptions {
 
     o.onDestroy = (quickey: Quickey) => {
         destroyCallback && destroyCallback(quickey);
-        quickeys.splice(quickeys.indexOf(quickey), 1);
+
+        const quickeyLocation = quickeys.indexOf(quickey);
+
+        if (quickeyLocation > -1) {
+            quickeys.splice(quickeyLocation, 1);
+        }
     };
 
     return o;
@@ -51,6 +56,7 @@ function createQuickey(options?: IQuickeyOptions | IQuickeyOptions[]): Quickey |
 
 export {
     IQuickeyOptions,
+    IQuickeyActionOptions,
     ActionCallback,
     OnDestroyCallback,
     createQuickey

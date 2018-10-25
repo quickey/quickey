@@ -23,6 +23,6 @@ export function every<T = any>(arr: T[], predicate: (item: T) => boolean = isTru
     return true;
 }
 
-export function lc(str: string) {
+export function lc(str: string = "") {
     return str.toLowerCase();
 }

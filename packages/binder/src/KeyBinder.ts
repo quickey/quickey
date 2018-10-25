@@ -117,7 +117,7 @@ export default class KeyBinder {
     }
 
     private _isInputMatchKey(input: IKeyboardInput, key: string): boolean {
-        const specialEventKey = SPECIAL_EVENT_KEY_MAP[key];
+        const specialEventKey = lc(SPECIAL_EVENT_KEY_MAP[key]);
 
         return specialEventKey
             ? input.key === specialEventKey

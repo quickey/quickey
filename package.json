@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watch --coverage",
+    "test:watch": "jest --watch",
     "release": "npm run tsc && npm run build:umd && npm test && lerna publish",
     "tsc": "lerna run tsc",
     "tsc:watch": "lerna run tsc:watch --parallel",

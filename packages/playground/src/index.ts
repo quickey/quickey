@@ -19,7 +19,7 @@ const quickey = createQuickey()
     })
     .addAction({
         keys: "Ctrl > Ctrl",
-        strict: true,
+        strict: false,
         callback: () => {
             console.log(`We are testing the strict mode`);
         }
