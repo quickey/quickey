@@ -3,6 +3,6 @@
 </p>
 
 [//]:![quickey](https://img.shields.io/npm/v/quickey/quickey.svg?style=flat-square)
-[![Travis](https://img.shields.io/travis/quickey/quickey.svg?style=flat-square)](https://travis-ci.org/quickey/quickey)
+[![Build Status](https://travis-ci.org/quickey/quickey.svg?branch=master&style=flat-square)](https://travis-ci.org/quickey/quickey)
 
 ## A Work in progress... Come back later.
