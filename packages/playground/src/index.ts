@@ -1,41 +1,56 @@
 import { createQuickey } from "@quickey/core";
 
-const quickey = createQuickey()
+createQuickey({
+    target: document.querySelector("#container1")
+})
     .addAction({
         keys: "I > D > K > F > A",
         strict: false,
         delay: 500,
-        callback: () => {
-            console.log("Key and FULL AMMO!");
+        callback: (_, target: HTMLElement) => {
+            console.log("Key and FULL AMMO!", target);
         }
     })
     .addAction({
         keys: "I > D > D > Q > D",
         strict: false,
         delay: 500,
-        callback: () => {
-            console.log("GOD Mode!")
+        callback: (_, target: HTMLElement) => {
+            console.log("GOD Mode!", target)
         }
     })
     .addAction({
         keys: "Ctrl > Ctrl",
         strict: false,
-        callback: () => {
-            console.log(`We are testing the strict mode`);
+        callback: (_, target: HTMLElement) => {
+            console.log(`We are testing the strict mode`, target);
         }
     })
     .addAction({
         keys: "Ctrl + +",
         strict: true,
-        callback: () => {
-            console.log(`Give me some plus!`);
+        callback: (_, target: HTMLElement) => {
+            console.log(`Give me some plus!`, target);
         }
     })
     .addAction({
         id: "hello",
         keys: "Ctrl + H",
         strict: true,
-        callback: () => {
-            console.log("Hello World!")
+        callback: (_, target: HTMLElement) => {
+            console.log("Hello World!", target)
         }
     });
+
+createQuickey({
+    target: document.querySelector("#container2")
+})
+    .addAction({
+        keys: "I > D > K > F > A",
+        strict: false,
+        delay: 500,
+        callback: (_, target: HTMLElement) => {
+            console.log("Colorize me!!!", target);
+            target.classList.toggle("red");
+        }
+    })

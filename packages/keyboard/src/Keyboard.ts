@@ -6,13 +6,17 @@ export default class Keyboard {
     private _keyUpStream: KeyboardEventReadStream;
     private _activeKeyRecord: Map<string, IKeyboardInput>;
 
-    constructor() {
+    constructor(private _target: EventTarget) {
         this._activeKeyRecord = new Map<string, IKeyboardInput>();
-        this._keyDownStream = new KeyboardEventReadStream("keydown");
-        this._keyUpStream = new KeyboardEventReadStream("keyup");
+        this._keyDownStream = new KeyboardEventReadStream("keydown", _target);
+        this._keyUpStream = new KeyboardEventReadStream("keyup", _target);
 
         this._keyDownStream.pipe(this._onKeyDown);
         this._keyUpStream.pipe(this._onKeyUp);
+    }
+
+    public get target(): EventTarget {
+        return this._target;
     }
 
     public get keyup(): KeyboardEventReadStream {

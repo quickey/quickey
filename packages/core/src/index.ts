@@ -17,7 +17,7 @@ const quickeys: Quickey[] = [
      */
 ];
 
-function createOptions(o: IQuickeyOptions = {}): IQuickeyOptions {
+function enhanceOptions(o: IQuickeyOptions = {}): IQuickeyOptions {
     const destroyCallback = o.onDestroy;
 
     o.onDestroy = (quickey: Quickey) => {
@@ -33,21 +33,22 @@ function createOptions(o: IQuickeyOptions = {}): IQuickeyOptions {
     return o;
 }
 
+function create(options: IQuickeyOptions): Quickey {
+    return new Quickey(enhanceOptions(options));
+}
+
 function createQuickey(options?: IQuickeyOptions): Quickey;
 function createQuickey(options?: IQuickeyOptions[]): Quickey[];
 function createQuickey(options?: IQuickeyOptions | IQuickeyOptions[]): Quickey | Quickey[] {
     if (!(options instanceof Array)) {
-        options = [options];
-    }
-
-    if (options.length <= 1) {
-        const q = new Quickey(createOptions(options[0]));
+        const q = create(options);
+        
         quickeys.push(q);
 
         return q;
     }
 
-    const qs = options.map((o: IQuickeyOptions) => new Quickey(createOptions(o)));
+    const qs = options.map(create);
 
     Array.prototype.push.apply(quickeys, qs);
 

@@ -1,4 +1,4 @@
-import { keyboard, IKeyboardInput } from "@quickey/keyboard";
+import { Keyboard, keyboard, IKeyboardInput } from "@quickey/keyboard";
 import { every, lc } from "@quickey/shared/lib/utils";
 import { CombinationType } from "./enums";
 import { IKeyBindCombination, IKeyBinderOptions } from "./interfaces";
@@ -6,19 +6,22 @@ import { SPECIAL_EVENT_KEY_MAP } from "./constants";
 import { prepareCombination } from "./utils";
 
 export interface IKeyBinderDelegate {
-    didMatchFound: (binder: KeyBinder, combinations: IKeyBindCombination[]) => void;
+    didMatchFound: (binder: KeyBinder, combinations: IKeyBindCombination[], target: EventTarget) => void;
 }
 
 export default class KeyBinder {
     public delegate: IKeyBinderDelegate;
+    private _keyboard: Keyboard;
     private readonly _combinations: Map<string, IKeyBindCombination>;
 
     constructor(options: IKeyBinderOptions = {}) {
         const {
             combinations = [],
-            autoPlay = true
+            autoPlay = true,
+            target
         } = options;
 
+        this._keyboard = (target && target instanceof EventTarget) ? new Keyboard(target) : keyboard;
         this._combinations = new Map();
 
         combinations.map(this.bind);
@@ -29,11 +32,11 @@ export default class KeyBinder {
     }
 
     public play() {
-        keyboard.keydown.pipe(this._onKeyboardKeyDown);
+        this._keyboard.keydown.pipe(this._onKeyboardKeyDown);
     }
 
     public pause() {
-        keyboard.keydown.unpipe(this._onKeyboardKeyDown);
+        this._keyboard.keydown.unpipe(this._onKeyboardKeyDown);
     }
 
     public bind = (combination: IKeyBindCombination) => {
@@ -56,7 +59,7 @@ export default class KeyBinder {
                 .filter((combination) => this._checkCombination(input, combination));
 
         if (matches.length && this.delegate) {
-            this.delegate.didMatchFound(this, matches);
+            this.delegate.didMatchFound(this, matches, this._keyboard.target);
         }
     }
 
@@ -74,12 +77,12 @@ export default class KeyBinder {
     private _checkConnectionCombination(input: IKeyboardInput, combination: IKeyBindCombination): boolean {
         return every<boolean>([
 
-            keyboard.activeKeys > 1,
+            this._keyboard.activeKeys > 1,
 
             every<string>(combination.parts, (key) => this._isActiveKey(key)),
 
             combination.strict
-                ? keyboard.activeKeys === combination.parts.length
+                ? this._keyboard.activeKeys === combination.parts.length
                 : true
         ]);
     }
@@ -92,7 +95,7 @@ export default class KeyBinder {
             if (combination.sequence === sequenceParts.length - 1) {
                 this._resetCombination(combination);
                 return combination.strict
-                    ? keyboard.activeKeys === 1
+                    ? this._keyboard.activeKeys === 1
                     : true;
             }
 
@@ -127,11 +130,15 @@ export default class KeyBinder {
     private _isActiveKey(key: string): boolean {
         key = lc(SPECIAL_EVENT_KEY_MAP[key] || key);
 
-        return keyboard.isKeyActive(key);
+        return this._keyboard.isKeyActive(key);
     }
 
     public destroy() {
         this.pause();
         this.removeAll();
+
+        if (this._keyboard !== keyboard) {
+            this._keyboard.destroy();
+        }
     }
 }

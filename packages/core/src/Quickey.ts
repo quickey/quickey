@@ -1,7 +1,7 @@
 import { guid } from "@quickey/shared/lib/utils";
 import { KeyBinder, IKeyBinderDelegate, IKeyBindCombination } from "@quickey/binder";
 
-export type ActionCallback = (combination?: IKeyBindCombination) => void;
+export type ActionCallback = (combination?: IKeyBindCombination, target?: EventTarget) => void;
 export type OnDestroyCallback = (quickey: Quickey) => void;
 
 interface IAction {
@@ -21,6 +21,7 @@ export interface IQuickeyOptions {
     description?: string;
     actions?: IQuickeyActionOptions[];
     onDestroy?: OnDestroyCallback;
+    target?: EventTarget;
 }
 
 export default class Quickey implements IKeyBinderDelegate {
@@ -36,7 +37,9 @@ export default class Quickey implements IKeyBinderDelegate {
         this._actions = new Map<string, IAction>();
         this._title = options.title;
         this._description = options.description;
-        this._keyBinder = new KeyBinder();
+        this._keyBinder = new KeyBinder({
+            target: options.target
+        });
         this._keyBinder.delegate = this;
         this._onDestroy = options.onDestroy;
 
@@ -60,12 +63,7 @@ export default class Quickey implements IKeyBinderDelegate {
             const id = action.id || guid();
             const { keys, delay, strict, callback, description } = action;
 
-            this._addAction({
-                id,
-                keys,
-                callback,
-                description
-            });
+            this._actions.set(id, { id, keys, callback, description });
 
             this._keyBinder.bind({
                 id,
@@ -93,7 +91,7 @@ export default class Quickey implements IKeyBinderDelegate {
     }
 
     public removeAction(actionId: string) {
-        this._removeAction(actionId);
+        this._actions.delete(actionId);
         this._keyBinder.unbind(actionId);
 
         return this;
@@ -113,18 +111,10 @@ export default class Quickey implements IKeyBinderDelegate {
      * @param {IKeyBindCombination[]} combinations
      * @memberof Quickey
      */
-    public didMatchFound(binder: KeyBinder, combinations: IKeyBindCombination[]) {
+    public didMatchFound(binder: KeyBinder, combinations: IKeyBindCombination[], target: EventTarget) {
         for (const combination of combinations) {
             const action = this._actions.get(combination.id);
-            action && action.callback(combination);
+            action && action.callback(combination, target);
         }
-    }
-
-    private _addAction(action: IAction) {
-        this._actions.set(action.id, action);
-    }
-
-    private _removeAction(actionId: string) {
-        this._actions.delete(actionId);
     }
 }

@@ -16,9 +16,9 @@ export function prepareCombination(opts): IKeyBindCombination {
 
     const sequenceParts = dto.keys.split(/ \> /);
     const connectionParts = dto.keys.split(/ \+ /);
-    
+
     if (sequenceParts.length > 1 && connectionParts.length > 1) {
-        throw new KeyBinderError("Only one combination type is allowed for combination (use '>' or '+')");
+        throw new KeyBinderError("only one combination type is allowed for combination (use '>' or '+')");
     }
 
     if (sequenceParts.length > 1) {
@@ -28,7 +28,7 @@ export function prepareCombination(opts): IKeyBindCombination {
         dto.type = CombinationType.Connection;
         dto.parts = connectionParts;
     } else {
-        throw new KeyBinderError("Can't create combination for one key");
+        throw new KeyBinderError("can't create combination with one key");
     }
 
     return dto;

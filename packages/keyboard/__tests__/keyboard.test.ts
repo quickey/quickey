@@ -10,12 +10,12 @@ afterEach(() => {
 describe('@quickey/keyboard', () => {
 
     it('should create Keyboard', () => {
-        keyboard = new Keyboard();
+        keyboard = new Keyboard(document);
         expect(keyboard).toBeDefined();
     });
 
     it('should stream on key down', () => {
-        keyboard = new Keyboard();
+        keyboard = new Keyboard(document);
 
         const writeStream = jest.fn();
 
@@ -29,7 +29,7 @@ describe('@quickey/keyboard', () => {
     });
 
     it('shoud stream on key up', () => {
-        keyboard = new Keyboard();
+        keyboard = new Keyboard(document);
 
         const writeStream = jest.fn();
 
@@ -43,7 +43,7 @@ describe('@quickey/keyboard', () => {
     });
 
     it('should not call stream when stream removed', () => {
-        keyboard = new Keyboard();
+        keyboard = new Keyboard(document);
 
         const writeStream = jest.fn();
 
@@ -56,7 +56,7 @@ describe('@quickey/keyboard', () => {
     });
 
     it('should report acrive keys count', () => {
-        keyboard = new Keyboard();
+        keyboard = new Keyboard(document);
 
         document.dispatchEvent(new KeyboardEvent("keydown", { which: 17, key: "Control" } as any));
         document.dispatchEvent(new KeyboardEvent("keydown", { which: 18, key: "Alt" } as any));
@@ -65,7 +65,7 @@ describe('@quickey/keyboard', () => {
     });
 
     it('should report if key is active', () => {
-        keyboard = new Keyboard();
+        keyboard = new Keyboard(document);
 
         document.dispatchEvent(new KeyboardEvent("keydown", { which: 17, key: "Control" } as any));
 
@@ -73,7 +73,7 @@ describe('@quickey/keyboard', () => {
     });
 
     it('should reset active keys record', () => {
-        keyboard = new Keyboard();
+        keyboard = new Keyboard(document);
 
         document.dispatchEvent(new KeyboardEvent("keydown", { which: 17, key: "Control" } as any));
         document.dispatchEvent(new KeyboardEvent("keydown", { which: 18, key: "Alt" } as any));
@@ -87,7 +87,7 @@ describe('@quickey/keyboard', () => {
     });
 
     it('should destroy keyboard and inner streams', () => {
-        keyboard = new Keyboard();
+        keyboard = new Keyboard(document);
 
         const writeStream = jest.fn();
 
@@ -101,5 +101,19 @@ describe('@quickey/keyboard', () => {
         expect(keyboard.keydown.inOpen).toBeFalsy();
 
         expect(keyboard.keyup.inOpen).toBeFalsy();
+    });
+
+    it('should stream on custom event target key down', () => {
+        const div = document.createElement("div");
+
+        keyboard = new Keyboard(div);
+
+        const writeStream = jest.fn();
+
+        keyboard.keydown.pipe(writeStream);
+
+        div.dispatchEvent(new KeyboardEvent("keydown", { which: 17, key: "Control" } as any));
+
+        expect(writeStream).toBeCalledTimes(1);
     });
 });

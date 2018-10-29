@@ -14,4 +14,5 @@ export interface IKeyBindCombination {
 export interface IKeyBinderOptions {
     combinations?: IKeyBindCombination[];
     autoPlay?: boolean;
+    target?: EventTarget;
 }

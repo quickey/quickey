@@ -6,13 +6,19 @@ const createInputWriteStream = (input: IKeyboardInput) => (stream: KeyboardEvent
 
 export default class KeyboardEventReadStream {
     private _isOpen: boolean;
+    private _tabIndexAttached: boolean;
     private readonly _writers: KeyboardEventWriteStream[];
 
-    constructor(private _event: string) {
+    constructor(private _event: string, private _target: EventTarget = document) {
         this._isOpen = true;
         this._writers = [];
 
-        document.addEventListener(this._event, this._onEvent, { passive: true });
+        if (_target instanceof Element && !_target.hasAttribute("tabindex")) {
+            _target.setAttribute("tabindex", "0");
+            this._tabIndexAttached = true;
+        }
+
+        this._target.addEventListener(this._event, this._onEvent, { passive: true });
     }
 
     public get inOpen(): boolean {
@@ -23,7 +29,12 @@ export default class KeyboardEventReadStream {
         this._isOpen = false;
         this._writers.length = 0;
 
-        document.removeEventListener(this._event, this._onEvent);
+        this._target.removeEventListener(this._event, this._onEvent);
+
+        if (this._tabIndexAttached) {
+            (this._target as Element).removeAttribute("tabindex");
+            this._tabIndexAttached = false;
+        }
     }
 
     public pipe(targetStream: KeyboardEventWriteStream) {
