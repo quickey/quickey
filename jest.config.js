@@ -17,8 +17,5 @@ module.exports = {
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest',
   },
-  preset: 'ts-jest',
-  roots: [
-    "packages/"
-  ]
+  preset: 'ts-jest'
 };

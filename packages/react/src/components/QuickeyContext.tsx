@@ -18,14 +18,14 @@ export default class QuickeyContext extends React.Component<IQuickeyContextProps
         global: false
     };
 
-    private element: React.RefObject<HTMLElement>;
-    private quickey: Quickey;
+    private _element: React.RefObject<HTMLElement>;
+    private _quickey: Quickey;
 
     constructor(props, context) {
         super(props, context);
 
-        this.element = React.createRef<HTMLElement>();
-        this.quickey = null;
+        this._element = React.createRef<HTMLElement>();
+        this._quickey = null;
     }
 
     public componentDidMount() {
@@ -39,35 +39,27 @@ export default class QuickeyContext extends React.Component<IQuickeyContextProps
         };
 
         if (!global) {
-            options.target = this.element.current;
+            options.target = this._element.current;
         }
 
-        this.quickey = createQuickey(options);
+        this._quickey = createQuickey(options);
     }
 
     public componentWillUnmount() {
-        this.quickey && this.quickey.destroy();
-        this.quickey = null;
+        this._quickey && this._quickey.destroy();
+        this._quickey = null;
+    }
+
+    public get quickey(): Quickey {
+        return this.quickey;
     }
 
     public removeAction(actionId: string) {
-        this.quickey.removeAction(actionId);
+        this._quickey.removeAction(actionId);
     }
 
     public addAction(actionOrActions: IQuickeyActionOptions | IQuickeyActionOptions[]) {
-        this.quickey.addAction(actionOrActions);
-    }
-
-    public play() {
-        this.quickey.play();
-    }
-
-    public pause() {
-        this.quickey.pause();
-    }
-
-    public get paused(): boolean {
-        return this.quickey.paused;
+        this._quickey.addAction(actionOrActions);
     }
 
     public render(): React.ReactNode {
@@ -80,13 +72,13 @@ export default class QuickeyContext extends React.Component<IQuickeyContextProps
 
         if (React.Children.count(children) === 1) {
             return React.cloneElement(children as React.ReactElement<any>, {
-                ref: this.element
+                ref: this._element
             });
         }
 
         return React.createElement(type, {
             ...others,
-            ref: this.element
+            ref: this._element
         });
     }
 }

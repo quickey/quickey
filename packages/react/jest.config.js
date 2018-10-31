@@ -5,6 +5,6 @@ module.exports = {
     ...base,
     displayName: package.name,
     name: package.name,
-    rootDir: "../..",
+    rootDir: "./",
     testMatch: [`**/__tests__/*.+(ts|tsx|js)`]
 };
