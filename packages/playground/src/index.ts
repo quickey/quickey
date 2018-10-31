@@ -1,4 +1,5 @@
 import { createQuickey } from "@quickey/core";
+import "./reactRenderer";
 
 createQuickey({
     target: document.querySelector("#container1")

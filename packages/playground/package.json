@@ -17,9 +17,13 @@
     "start": "NODE_ENV=development webpack-dev-server --watch --open"
   },
   "dependencies": {
-    "@quickey/core": "0.0.0"
+    "@quickey/core": "0.0.0",
+    "@quickey/react": "0.0.0",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0"
   },
   "devDependencies": {
+    "@types/react": "^16.4.18",
     "@types/webpack-env": "1.13.6",
     "clean-webpack-plugin": "0.1.19",
     "html-webpack-plugin": "3.2.0",

@@ -14,7 +14,18 @@ describe('KeyBinder', () => {
     describe('general', () => {
         it('should create key binder with no options', () => {
             keyBinder = new KeyBinder();
+            
             expect(keyBinder).toBeDefined();
+        });
+
+        it('should return pause state', () => {
+            keyBinder = new KeyBinder({ autoPlay: true });
+
+            expect(keyBinder.paused).toBe(false);
+
+            keyBinder.pause();
+
+            expect(keyBinder.paused).toBe(true);
         });
     });
 

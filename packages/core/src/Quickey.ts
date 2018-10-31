@@ -54,6 +54,10 @@ export default class Quickey implements IKeyBinderDelegate {
         return this._description;
     }
 
+    public get paused(): boolean {
+        return this._keyBinder.paused;
+    }
+
     public addAction = (actionOrActions: IQuickeyActionOptions | IQuickeyActionOptions[]) => {
         if (!(actionOrActions instanceof Array)) {
             actionOrActions = [actionOrActions];
@@ -63,7 +67,12 @@ export default class Quickey implements IKeyBinderDelegate {
             const id = action.id || guid();
             const { keys, delay, strict, callback, description } = action;
 
-            this._actions.set(id, { id, keys, callback, description });
+            this._actions.set(id, {
+                id,
+                keys,
+                callback,
+                description
+            });
 
             this._keyBinder.bind({
                 id,

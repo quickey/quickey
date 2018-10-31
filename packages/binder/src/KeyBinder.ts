@@ -12,6 +12,7 @@ export interface IKeyBinderDelegate {
 export default class KeyBinder {
     public delegate: IKeyBinderDelegate;
     private _keyboard: Keyboard;
+    private _paused: boolean;
     private readonly _combinations: Map<string, IKeyBindCombination>;
 
     constructor(options: IKeyBinderOptions = {}) {
@@ -23,6 +24,7 @@ export default class KeyBinder {
 
         this._keyboard = (target && target instanceof EventTarget) ? new Keyboard(target) : keyboard;
         this._combinations = new Map();
+        this._paused = true;
 
         combinations.map(this.bind);
 
@@ -31,12 +33,18 @@ export default class KeyBinder {
         }
     }
 
+    public get paused(): boolean {
+        return this._paused;
+    }
+
     public play() {
         this._keyboard.keydown.pipe(this._onKeyboardKeyDown);
+        this._paused = false;
     }
 
     public pause() {
         this._keyboard.keydown.unpipe(this._onKeyboardKeyDown);
+        this._paused = true;
     }
 
     public bind = (combination: IKeyBindCombination) => {
