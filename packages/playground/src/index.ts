@@ -1,5 +1,6 @@
 import { createQuickey } from "@quickey/core";
 import "./reactRenderer";
+import "./vueRenderer";
 
 createQuickey({
     target: document.querySelector("#container1")

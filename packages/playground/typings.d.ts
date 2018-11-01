@@ -6,4 +6,9 @@ declare module "*.scss" {
     export = classNames;
 }
 
+declare module "*.vue" {
+    import Vue from "vue";
+    export default Vue;
+}
+
 type Constructor<T> = new (...args: any[]) => T;

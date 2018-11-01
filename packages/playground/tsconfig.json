@@ -31,7 +31,8 @@
     },
     "include": [
         "./**/*.ts",
-        "./**/*.tsx"
+        "./**/*.tsx",
+        "./**/*.vue",
     ],
     "files": [
         "./typings.d.ts"

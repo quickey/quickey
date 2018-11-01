@@ -3,6 +3,9 @@
     "compilerOptions": {
         "outDir": "./lib"
     },
+    "files": [
+        "./typings.d.ts"
+    ],
     "include": [
         "./src"
     ]

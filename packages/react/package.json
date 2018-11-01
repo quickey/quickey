@@ -30,7 +30,7 @@
     "tsc:watch": "tsc -w",
     "test": "jest --color",
     "test:watch": "jest --watch --color",
-    "clean": "rimraf lib/"
+    "build:umd": "webpack"
   },
   "bugs": {
     "url": "https://github.com/quickey/quickey/issues"
@@ -42,11 +42,11 @@
     "@types/react": "16.4.18",
     "@types/webpack-env": "1.13.6",
     "clean-webpack-plugin": "0.1.19",
-    "enzyme": "^3.7.0",
-    "enzyme-adapter-react-16": "^1.6.0",
+    "enzyme": "3.7.0",
+    "enzyme-adapter-react-16": "1.6.0",
     "html-webpack-plugin": "3.2.0",
     "react": "16.6.0",
-    "react-dom": "^16.6.0",
+    "react-dom": "16.6.0",
     "ts-loader": "5.2.2",
     "webpack-dev-server": "3.1.9"
   }

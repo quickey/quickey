@@ -1,6 +1,6 @@
 'use strict';
 
-const vue = require('..');
+import { QuickeyContext } from "../src";
 
 describe('@quickey/vue', () => {
     it('needs tests', () => {

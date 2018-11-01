@@ -12,15 +12,15 @@ const base = {
     },
 
     output: {
-        library: ["Quickey", "react"]
+        library: ["Quickey", "vue"]
     },
 
     externals: {
-        "react": {
-            root: 'React',
-            commonjs2: 'react',
-            commonjs: 'react',
-            amd: 'react'
+        "vue": {
+            root: 'Vue',
+            commonjs2: 'vue',
+            commonjs: 'vue',
+            amd: 'vue'
         }
     }
 }
@@ -28,13 +28,13 @@ const base = {
 module.exports = [
     merge(dev({ destDir, contextPath }), base, {
         output: {
-            filename: 'quickey.react.development.min.js'
+            filename: 'quickey.vue.development.min.js'
         }
     }),
 
     merge(prod({ destDir, contextPath }), base, {
         output: {
-            filename: 'quickey.react.production.min.js'
+            filename: 'quickey.vue.production.min.js'
         }
     })
 ];

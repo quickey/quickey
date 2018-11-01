@@ -1,9 +1,12 @@
 .idea
 .vscode
 .DS_Store
-node_modules/
+
 lerna-debug.log
 npm-debug.log
-packages/*/lib
+
+node_modules/
 coverage/
-umd/
+
+packages/*/lib
+packages/*/umd

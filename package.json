@@ -4,12 +4,13 @@
   "scripts": {
     "test": "lerna run test",
     "test:watch": "lerna run test:watch --stream --parallel",
-    "release": "npm run tsc && npm run build:umd && npm test && lerna publish",
+    "release": "npm run build && lerna publish",
     "tsc": "lerna run tsc",
     "tsc:watch": "lerna run tsc:watch --parallel",
-    "clean": "lerna exec rimraf lib/",
+    "clean": "lerna exec rimraf lib/ umd/",
     "build:umd": "lerna run build:umd --stream --parallel",
-    "commit": "commitify"
+    "commit": "commitify",
+    "build": "npm run clean && npm run tsc && npm run build:umd && npm test"
   },
   "devDependencies": {
     "@types/enzyme-adapter-react-16": "^1.0.3",

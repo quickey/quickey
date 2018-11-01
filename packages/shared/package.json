@@ -15,8 +15,7 @@
     "tsc": "tsc",
     "tsc:watch": "tsc -w",
     "test": "jest --color",
-    "test:watch": "jest --watch --color",
-    "clean": "rimraf lib/"
+    "test:watch": "jest --watch --color"
   },
   "bugs": {
     "url": "https://github.com/quickey/quickey/issues"

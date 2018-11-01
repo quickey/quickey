@@ -19,8 +19,10 @@
   "dependencies": {
     "@quickey/core": "0.0.0",
     "@quickey/react": "0.0.0",
+    "@quickey/vue": "0.0.0",
     "react": "^16.6.0",
-    "react-dom": "^16.6.0"
+    "react-dom": "^16.6.0",
+    "vue": "^2.5.17"
   },
   "devDependencies": {
     "@types/react": "^16.4.18",
@@ -28,6 +30,8 @@
     "clean-webpack-plugin": "0.1.19",
     "html-webpack-plugin": "3.2.0",
     "ts-loader": "5.2.2",
+    "vue-loader": "^14.2.3",
+    "vue-template-compiler": "^2.5.17",
     "webpack": "4.20.2",
     "webpack-cli": "3.1.2",
     "webpack-dev-server": "3.1.9"
