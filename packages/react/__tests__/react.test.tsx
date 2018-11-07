@@ -47,28 +47,24 @@ describe('@quickey/react', () => {
             expect(wrapper.contains(<div />)).toBe(true);
         });
 
-        xit('should add and trigger a new action', () => {
+        it('should add and trigger a new action', () => {
 
             const callback = jest.fn();
 
             const wrapper = shallow(
-                <QuickeyContext actions={[{
+                <QuickeyContext global actions={[{
                     keys: "Ctrl + Alt + Delete",
                     callback
                 }]}>
                 </QuickeyContext>
             );
 
-            const $root = wrapper.find("div");
-
-            $root.simulate("click");
-
             [
                 { which: 17, key: "Control" },
                 { which: 18, key: "Alt" },
                 { which: 46, key: "Delete" }
             ]
-                .map((eventParams) => $root.simulate("keydown", eventParams));
+                .map((eventParams) => document.dispatchEvent(new KeyboardEvent("keydown", eventParams as any)));
 
             expect(callback).toBeCalledTimes(1);
         });

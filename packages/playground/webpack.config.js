@@ -48,7 +48,7 @@ const config = {
         modules: [contextPath, "node_modules"],
 
         alias: {
-            'vue$': 'vue/dist/vue.esm.js'
+            'vue': 'vue/dist/vue.esm.js'
         }
     },
 

@@ -1,7 +1,8 @@
 <template>
     <div>
-      <QuickeyContext ref="qc" type="span" :global="true" :actions="actions">
-      </QuickeyContext>
+      <quickey-context ref="qc" type="span" :global="true" :actions="actions">
+        UDI TALIAS
+      </quickey-context>
       <button @click="alert">
         Hello {{name}}
       </button>
