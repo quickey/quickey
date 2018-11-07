@@ -1,6 +1,5 @@
 import { createQuickey } from "@quickey/core";
 import "./reactRenderer";
-import "./vueRenderer";
 
 createQuickey({
     target: document.querySelector("#container1")
@@ -55,4 +54,4 @@ createQuickey({
             console.log("Colorize me!!!", target);
             target.classList.toggle("red");
         }
-    })
+    });

@@ -25,16 +25,20 @@ export default class Home extends React.Component<IHomeProps, IHomeState> {
         };
     }
 
+    private toggleCheatState(cheat: string) {
+        const nextState: any = {
+            [cheat]: !this.state[cheat]
+        };
+
+        this.setState(nextState);
+    }
+
     private onGodMode = () => {
-        this.setState({
-            godMode: !this.state.godMode
-        });
+        this.toggleCheatState("godMode");
     }
 
     private onFullInventory = () => {
-        this.setState({
-            fullInventory: !this.state.fullInventory
-        });
+        this.toggleCheatState("fullInventory");
     }
 
     private cheatState(cheat) {
