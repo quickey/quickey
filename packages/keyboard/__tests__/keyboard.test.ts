@@ -19,7 +19,7 @@ describe('@quickey/keyboard', () => {
 
         const writeStream = jest.fn();
 
-        keyboard.keydown.pipe(writeStream);
+        keyboard.getStream("keydown").pipe(writeStream);
 
         document.dispatchEvent(new KeyboardEvent("keydown", { which: 17, key: "Control" } as any));
 
@@ -33,7 +33,7 @@ describe('@quickey/keyboard', () => {
 
         const writeStream = jest.fn();
 
-        keyboard.keyup.pipe(writeStream);
+        keyboard.getStream("keyup").pipe(writeStream);
 
         document.dispatchEvent(new KeyboardEvent("keyup", { which: 17, key: "Control" } as any));
 
@@ -47,8 +47,8 @@ describe('@quickey/keyboard', () => {
 
         const writeStream = jest.fn();
 
-        keyboard.keydown.pipe(writeStream);
-        keyboard.keydown.unpipe(writeStream);
+        keyboard.getStream("keydown").pipe(writeStream);
+        keyboard.getStream("keydown").unpipe(writeStream);
 
         document.dispatchEvent(new KeyboardEvent("keyup", { which: 17, key: "Control" } as any));
 
@@ -91,16 +91,16 @@ describe('@quickey/keyboard', () => {
 
         const writeStream = jest.fn();
 
-        keyboard.keydown.pipe(writeStream);
-        keyboard.keyup.pipe(writeStream);
+        keyboard.getStream("keydown").pipe(writeStream);
+        keyboard.getStream("keyup").pipe(writeStream);
 
         keyboard.destroy();
 
         expect(writeStream).toBeCalledTimes(0);
 
-        expect(keyboard.keydown.inOpen).toBeFalsy();
+        expect(keyboard.getStream("keydown").inOpen).toBeFalsy();
 
-        expect(keyboard.keyup.inOpen).toBeFalsy();
+        expect(keyboard.getStream("keyup").inOpen).toBeFalsy();
     });
 
     it('should stream on custom event target key down', () => {
@@ -110,7 +110,7 @@ describe('@quickey/keyboard', () => {
 
         const writeStream = jest.fn();
 
-        keyboard.keydown.pipe(writeStream);
+        keyboard.getStream("keydown").pipe(writeStream);
 
         div.dispatchEvent(new KeyboardEvent("keydown", { which: 17, key: "Control" } as any));
 

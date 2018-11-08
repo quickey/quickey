@@ -1,7 +1,7 @@
 {
   "name": "@quickey/react",
   "version": "0.0.0",
-  "description": "> TODO: description",
+  "description": "Create quickey for react elements",
   "author": "Udi Talias <udi.talias@gmail.com>",
   "homepage": "https://github.com/quickey/quickey#readme",
   "license": "MIT",

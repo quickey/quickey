@@ -2,7 +2,7 @@
     <img alt="quickey" src="https://raw.githubusercontent.com/quickey/quickey/master/assets/logo.png" width="180">
 </p>
 
-[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=%E2%9A%A1%EF%B8%8FQuickey%20helps%20you%20create%20quick%20keyboard%20shortcuts%20for%20the%20web&url=https://github.com/quickey/quickey&via=uditalias&hashtags=javascript,keybinding,shortcuts,developers,webdeveloper)
+[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=%E2%9A%A1%EF%B8%8FQuickey%20creates%20keyboard%20shortcuts%20for%20your%20web%20app&url=https://github.com/quickey/quickey&via=uditalias&hashtags=javascript,keybinding,shortcuts,developers,webdeveloper)
 
 ---
 

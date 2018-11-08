@@ -1,7 +1,7 @@
 {
   "name": "@quickey/core",
   "version": "0.0.0",
-  "description": "> TODO: description",
+  "description": "Create and bind quickey actions",
   "author": "Udi Talias <udi.talias@gmail.com>",
   "homepage": "https://github.com/quickey/quickey#readme",
   "license": "MIT",

@@ -1,7 +1,7 @@
 {
   "name": "@quickey/binder",
   "version": "0.0.0",
-  "description": "> TODO: description",
+  "description": "Subscribe to keyboard combinations",
   "author": "Udi Talias <udi.talias@gmail.com>",
   "homepage": "https://github.com/quickey/quickey#readme",
   "license": "MIT",

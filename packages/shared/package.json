@@ -2,7 +2,7 @@
   "name": "@quickey/shared",
   "version": "0.0.0",
   "private": true,
-  "description": "> TODO: description",
+  "description": "Shared utils",
   "author": "Udi Talias <udi.talias@gmail.com>",
   "homepage": "https://github.com/quickey/quickey#readme",
   "license": "MIT",

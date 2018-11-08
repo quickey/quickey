@@ -38,12 +38,12 @@ export default class KeyBinder {
     }
 
     public play() {
-        this._keyboard.keydown.pipe(this._onKeyboardKeyDown);
+        this._keyboard.getStream("keydown").pipe(this._onKeyboardKeyDown);
         this._paused = false;
     }
 
     public pause() {
-        this._keyboard.keydown.unpipe(this._onKeyboardKeyDown);
+        this._keyboard.getStream("keydown").unpipe(this._onKeyboardKeyDown);
         this._paused = true;
     }
 
