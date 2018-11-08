@@ -9,12 +9,12 @@
 ## Packages
 
 ### Lib
-- [Core](packages/core/README.md)
-- [Binder](packages/binder/README.md)
-- [Keyboard](packages/keyboard/README.md)
+- [@quickey/core](packages/core/README.md)
+- [@quickey/binder](packages/binder/README.md)
+- [@quickey/keyboard](packages/keyboard/README.md)
 
 ### UI
-- [React](packages/react/README.md)
+- [@quickey/react](packages/react/README.md)
 
 ## Reporting Issues
 
