@@ -1,7 +1,7 @@
 {
   "name": "@quickey/core",
   "version": "0.0.1-alpha.0",
-  "description": "Create and bind quickey actions",
+  "description": "Quickey creates keyboard shortcuts for your web apps",
   "author": "Udi Talias <udi.talias@gmail.com>",
   "homepage": "https://github.com/quickey/quickey#readme",
   "license": "MIT",

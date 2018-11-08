@@ -19,13 +19,13 @@ const base = {
 module.exports = [
     merge(dev({ destDir, contextPath }), base, {
         output: {
-            filename: 'quickey.keyboard.development.min.js'
+            filename: 'quickey.keyboard.js'
         }
     }),
 
     merge(prod({ destDir, contextPath }), base, {
         output: {
-            filename: 'quickey.keyboard.production.min.js'
+            filename: 'quickey.keyboard.min.js'
         }
     })
 ];

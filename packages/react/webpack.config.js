@@ -28,13 +28,13 @@ const base = {
 module.exports = [
     merge(dev({ destDir, contextPath }), base, {
         output: {
-            filename: 'quickey.react.development.min.js'
+            filename: 'quickey.react.js'
         }
     }),
 
     merge(prod({ destDir, contextPath }), base, {
         output: {
-            filename: 'quickey.react.production.min.js'
+            filename: 'quickey.react.min.js'
         }
     })
 ];
