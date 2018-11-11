@@ -27,7 +27,10 @@ Each package has its own documentations, explore the list of packages below.
 - [@quickey/keyboard](packages/keyboard/README.md)
 
 ### UI 🌈
+- @quickey/ui
 - [@quickey/react](packages/react/README.md)
+- @quickey/vue
+- @quickey/angular
 
 ## Reporting Issues
 
