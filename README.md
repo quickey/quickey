@@ -5,9 +5,10 @@
 ⚡️Quickey creates keyboard shortcuts for your web apps
 </h2>
 
----
-
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=%E2%9A%A1%EF%B8%8FQuickey%20creates%20keyboard%20shortcuts%20for%20your%20web%20app&url=https://github.com/quickey/quickey&via=uditalias&hashtags=javascript,keybinding,shortcuts,developers,webdeveloper)
+[![Npm](https://img.shields.io/npm/v/@quickey/core.svg?style=flat-square)](https://www.npmjs.com/package/@quickey/core)
+[![Travis](https://img.shields.io/travis/quickey/quickey.svg?style=flat-square)](https://travis-ci.org/quickey/quickey)
+[![GitHub](https://img.shields.io/github/license/quickey/quickey.svg?style=flat-square)](https://github.com/quickey/quickey/blob/master/LICENSE)
 
 
 
