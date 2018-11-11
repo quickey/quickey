@@ -1,10 +1,15 @@
-<p align="left">
-    <img alt="quickey" src="https://raw.githubusercontent.com/quickey/quickey/master/assets/logo.png" width="180">
+<p align="center">
+    <img alt="quickey" src="https://raw.githubusercontent.com/quickey/quickey/master/assets/keyboard.png">
 </p>
+<h1 align="center">
+⚡️Quickey creates keyboard shortcuts for your web apps
+</h1>
+
+---
 
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=%E2%9A%A1%EF%B8%8FQuickey%20creates%20keyboard%20shortcuts%20for%20your%20web%20app&url=https://github.com/quickey/quickey&via=uditalias&hashtags=javascript,keybinding,shortcuts,developers,webdeveloper)
 
----
+
 
 ## Packages
 
