@@ -18,6 +18,9 @@ Quickey is a tool that helps you bind keyboard key combinations to actions in yo
 
 ## Packages
 
+Quickey is built a over few independant packages. Each one can be used by installing via the npm or by importing the UMD module from the CDN.  
+Each package has its own documentations, explore the list of packages below.
+
 ### Lib
 - [@quickey/core](packages/core/README.md)
 - [@quickey/binder](packages/binder/README.md)
