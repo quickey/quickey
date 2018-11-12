@@ -6,7 +6,7 @@
 </h2>
 
 <p align="center">
-  <a href="https://travis-ci.org/quickey/quickey"><img alt="Travis Status" src="https://img.shields.io/travis/quickey/quickey/master.svg?label=travis&maxAge=43200"></a>
+  <a href="https://travis-ci.org/quickey/quickey"><img alt="Travis Status" src="https://img.shields.io/travis/quickey/quickey/master.svg?label=build&maxAge=43200"></a>
   <a href="https://www.npmjs.com/package/@quickey/core"><img alt="NPM Downloads" src="https://img.shields.io/npm/v/@quickey/core.svg?maxAge=43200"></a>
 
 <img alt="NPM Downloads" src="https://img.shields.io/badge/dependency-free-ff69b4.svg?maxAge=43200">
