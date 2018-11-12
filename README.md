@@ -8,6 +8,8 @@
 <p align="center">
   <a href="https://travis-ci.org/quickey/quickey"><img alt="Travis Status" src="https://img.shields.io/travis/quickey/quickey/master.svg?label=travis&maxAge=43200"></a>
   <a href="https://www.npmjs.com/package/@quickey/core"><img alt="NPM Downloads" src="https://img.shields.io/npm/v/@quickey/core.svg?maxAge=43200"></a>
+
+<img alt="NPM Downloads" src="https://img.shields.io/badge/dependency-free-ff69b4.svg?maxAge=43200">
   <a href="https://github.com/quickey/quickey/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/github/license/quickey/quickey.svg?label=license&maxAge=43200"></a>
 <a href="https://twitter.com/intent/tweet?text=%E2%9A%A1%EF%B8%8FQuickey%20creates%20keyboard%20shortcuts%20for%20your%20web%20app&url=https://github.com/quickey/quickey&via=uditalias&hashtags=javascript,keybinding,shortcuts,developers,webdeveloper"><img alt="License" src="https://img.shields.io/twitter/url/http/shields.io.svg?label=tweet&maxAge=43200"></a>
 </p>
@@ -44,6 +46,9 @@ We use GitHub Issues as the official bug tracker for JMinor. Here are some advic
 
 Pull requests are welcome. For major changes, please [open an issue](https://github.com/quickey/quickey/issues/new/choose) first to discuss what you would like to change.
 
+This project is built as monorepo. In the packages folder you can find all it's packages.
+For more information about monorepos, checkout [Lerna](https://github.com/lerna/lerna/blob/master/README.md) docs.
+
 Please make sure to update tests as appropriate.
 
 ## License
@@ -52,3 +57,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Links
 * [JavaScript Event KeyCodes](https://keycode.info/)
+* [Lerna](https://lernajs.io/)
