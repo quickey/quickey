@@ -54,7 +54,7 @@ import { createQuickey } from "@quickey/core";
 
 const createQuickey = Quickey.core.createQuickey;
 
-// First, create a new Quickey
+// First, create a new Quickey instance
 const quickey = createQuickey();
 
 // Adding actions to your quickey is simple as
