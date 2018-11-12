@@ -18,6 +18,61 @@
 
 Quickey is a tool that helps you bind keyboard key combinations to actions in your web app. You can bind multiple actions to specific elements in your page to help your users navigate your application more efficiently and easily.
 
+## Quickey Start
+
+If you want a quick intro about how to use Quickey, we suggest that you jump to the [@quickey/core](packages/core/README.md) package or read the next sections.
+
+## Install
+
+Quickey can be installed via [npm](https://www.npmjs.com):
+```sh
+$ npm install --save @quickey/core
+```
+
+Or via [yarn](https://yarnpkg.com):
+```sh
+$ yarn add @quickey/core
+```
+
+Or using the CDN:
+
+```html
+<script src="https://unpkg.com/@quickey/core@latest/umd/quickey.core.js"></script>
+```
+Or the minified version:
+```html
+<script src="https://unpkg.com/@quickey/core@latest/umd/quickey.core.min.js"></script>
+```
+
+## Usage
+
+```javascript
+import { createQuickey } from "@quickey/core";
+
+// Or when using the UMD module
+
+const createQuickey = Quickey.core.createQuickey;
+
+// First, create a new Quickey
+const quickey = createQuickey();
+
+// Adding actions to your quickey is simple as
+const { id } = quickey
+    .addAction({
+        keys: "I > D > D > Q > D",
+        callback: (combination, target) => {
+            console.log("GOD Mode!");
+        }
+    });
+
+// Remove action
+quickey
+    .removeAction(id);
+```
+Checkout [@quickey/core](packages/core/README.md) for more options.
+
+For your convenience, we created this [**Fiddle**](http://jsfiddle.net/udidu/y6phe5ok/7/), so you can take Quickey for a quick spin.
+
 ## Packages
 
 Quickey is built a over few independant packages. Each one can be used by installing via the npm or by importing the UMD module from the CDN.  
