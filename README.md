@@ -40,6 +40,12 @@ We use GitHub Issues as the official bug tracker for JMinor. Here are some advic
 2. Providing us reproducible steps for the issue will shorten the time it takes for it to be fixed. A JSFiddle is always welcomed, and you can start from this [basic one](https://jsfiddle.net/udidu/7x38s4gb/6/).
 3. Some issues may be browser specific, so specifying in what browser you encountered the issue might help.
 
+## Contributions
+
+Pull requests are welcome. For major changes, please [open an issue](https://github.com/quickey/quickey/issues/new/choose) first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
