@@ -11,7 +11,8 @@
 
 <img alt="NPM Downloads" src="https://img.shields.io/badge/dependency-free-ff69b4.svg?maxAge=43200">
   <a href="https://github.com/quickey/quickey/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/github/license/quickey/quickey.svg?label=license&maxAge=43200"></a>
-<a href="https://twitter.com/intent/tweet?text=%E2%9A%A1%EF%B8%8FQuickey%20creates%20keyboard%20shortcuts%20for%20your%20web%20app&url=https://github.com/quickey/quickey&via=uditalias&hashtags=javascript,keybinding,shortcuts,developers,webdeveloper"><img alt="License" src="https://img.shields.io/twitter/url/http/shields.io.svg?label=tweet&maxAge=43200"></a>
+<a href="https://twitter.com/intent/tweet?text=%E2%9A%A1%EF%B8%8FQuickey%20creates%20keyboard%20shortcuts%20for%20your%20web%20app&url=https://github.com/quickey/quickey&via=uditalias&hashtags=javascript,keybinding,shortcuts,developers,webdeveloper">
+<img alt="Tweet" src="https://img.shields.io/badge/tweet-🐦-efefef.svg?maxAge=43200"></a>
 </p>
 
 ## Intro
