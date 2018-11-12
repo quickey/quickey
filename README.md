@@ -35,7 +35,7 @@ Or via [yarn](https://yarnpkg.com):
 $ yarn add @quickey/core
 ```
 
-Or using the CDN:
+Or using the [CDN](https://unpkg.com):
 
 ```html
 <script src="https://unpkg.com/@quickey/core@latest/umd/quickey.core.js"></script>
