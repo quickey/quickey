@@ -126,9 +126,9 @@ Type: `number`
 
 #### KeyboardEventReadStream([event,target])
 
-Type: `constructor`
-
 Creates a new KeyboardEventReadStream
+
+Type: `constructor`
 
 ##### event
 
@@ -196,4 +196,4 @@ Type: `number`
 
 Returns: `boolean` | `void`
 
-[&larr; Go back](/README) to Quickey
+[&larr; Go back](/README.md) to Quickey
