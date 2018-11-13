@@ -52,9 +52,11 @@ For your convenience, we created this [**Fiddle**](http://jsfiddle.net/udidu/y2v
 
 ### Keyboard
 
-#### new Keyboard([target])
+#### Keyboard([target])
 
 Creates a new keyboard
+
+Type: `constructor`
 
 ##### target
 
@@ -122,7 +124,9 @@ Type: `number`
 
 ### KeyboardEventReadStream
 
-#### new KeyboardEventReadStream([event,target])
+#### KeyboardEventReadStream([event,target])
+
+Type: `constructor`
 
 Creates a new KeyboardEventReadStream
 
@@ -180,7 +184,7 @@ continue for the next stream
 
 ##### input
 
-Type: `object` - `{ [key, code] }`
+Type: `object`
 
 ###### key
 
