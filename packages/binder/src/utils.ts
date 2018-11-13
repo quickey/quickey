@@ -1,35 +1,35 @@
 import { guid } from "@quickey/shared/lib/utils";
-import { IKeyBindCombination } from "./interfaces";
-import { CombinationType } from "./enums";
+import { IKeyBinding } from "./interfaces";
+import { KeyBindingType } from "./enums";
 
 class KeyBinderError extends TypeError { }
 
-export function prepareCombination(opts): IKeyBindCombination {
-    const dto: IKeyBindCombination = {
+export function prepareKeyBinding(opts): IKeyBinding {
+    const dto: any = {
         id: opts.id || guid(),
         keys: opts.keys.trim().toUpperCase(),
         delay: opts.delay || 250,
-        sequence: 0,
         strict: opts.strict || false,
+        sequence: 0,
         sequenceTimer: null
     };
 
-    const sequenceParts = dto.keys.split(/ \> /);
+    const streamParts = dto.keys.split(/ \> /);
     const connectionParts = dto.keys.split(/ \+ /);
 
-    if (sequenceParts.length > 1 && connectionParts.length > 1) {
-        throw new KeyBinderError("only one combination type is allowed for combination (use '>' or '+')");
+    if (streamParts.length > 1 && connectionParts.length > 1) {
+        throw new KeyBinderError("only one type is allowed for binding (use '>' or '+')");
     }
 
-    if (sequenceParts.length > 1) {
-        dto.type = CombinationType.Sequence;
-        dto.parts = sequenceParts;
+    if (streamParts.length > 1) {
+        dto.type = KeyBindingType.Stream;
+        dto.parts = streamParts;
     } else if (connectionParts.length > 1) {
-        dto.type = CombinationType.Connection;
+        dto.type = KeyBindingType.Combination;
         dto.parts = connectionParts;
     } else {
-        throw new KeyBinderError("can't create combination with one key");
+        throw new KeyBinderError("can't create binding with one key");
     }
 
-    return dto;
+    return dto as IKeyBinding;
 }

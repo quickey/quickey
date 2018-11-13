@@ -1,18 +1,18 @@
-import { CombinationType } from "./enums";
+import { KeyBindingType } from "./enums";
 
-export interface IKeyBindCombination {
+export interface IKeyBinding {
     id?: string;
     keys: string;
     delay?: number;
     strict?: boolean;
-    type?: CombinationType;
-    parts?: string[];
-    sequence?: number,
-    sequenceTimer?: any
+    sequence: number,
+    sequenceTimer: any
+    readonly type: KeyBindingType;
+    readonly parts: string[];
 }
 
 export interface IKeyBinderOptions {
-    combinations?: IKeyBindCombination[];
-    autoPlay?: boolean;
+    bindings?: Partial<IKeyBinding>[];
+    disabled?: boolean;
     target?: EventTarget;
 }

@@ -52,7 +52,7 @@ describe('Quickey', () => {
         expect(onDestroy).toHaveBeenCalledTimes(1);
     });
 
-    it('should trigger action callback when combination fulfilled', () => {
+    it('should trigger action callback when binding fulfilled', () => {
         const actionCallback = jest.fn();
 
         quickey = new Quickey({
@@ -86,5 +86,40 @@ describe('Quickey', () => {
             .map((eventParams) => document.dispatchEvent(new KeyboardEvent("keyup", eventParams as any)));
 
         expect(actionCallback).toHaveBeenCalledTimes(0);
+    });
+
+    it('should call subscription when action added', () => {
+        const updateSubscription = jest.fn();
+
+        quickey = new Quickey();
+
+        quickey.subscribe(updateSubscription);
+
+        quickey
+            .addAction({
+                keys: "Ctrl + Alt + Delete",
+                callback: () => { }
+            });
+
+        expect(updateSubscription).toBeCalledTimes(1);
+    });
+
+    it('should call subscription when action removed', () => {
+        const updateSubscription = jest.fn();
+
+        quickey = new Quickey();
+
+        quickey
+            .addAction({
+                id: "action_1",
+                keys: "Ctrl + Alt + Delete",
+                callback: () => { }
+            });
+
+        quickey.subscribe(updateSubscription);
+
+        quickey.removeAction("action_1");
+
+        expect(updateSubscription).toBeCalledTimes(1);
     });
 });

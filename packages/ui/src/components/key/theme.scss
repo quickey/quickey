@@ -1,0 +1,25 @@
+.quickey-key-wrapper {
+    display: flex;
+    align-items: center;
+    font-family: Courier New;
+    font-weight: bold;
+
+    .quickey-key {
+        padding: 1px 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        background-color: #f7f7f7;
+        color: #666;
+        box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2), 0 0 0 2px #ffffff inset;
+        border-radius: 3px;
+        margin: 0 1px;
+        text-shadow: 0 1px 0 #fff;
+        line-height: 1.4;
+        white-space: nowrap;
+    }
+
+    .quickey-key-bind {
+        margin: 0 2px;
+        font-size: 12px;
+    }
+}

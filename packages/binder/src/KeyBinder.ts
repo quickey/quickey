@@ -1,130 +1,132 @@
 import { Keyboard, keyboard, IKeyboardInput } from "@quickey/keyboard";
 import { every, lc } from "@quickey/shared/lib/utils";
-import { CombinationType } from "./enums";
-import { IKeyBindCombination, IKeyBinderOptions } from "./interfaces";
+import { KeyBindingType } from "./enums";
+import { IKeyBinding, IKeyBinderOptions } from "./interfaces";
 import { SPECIAL_EVENT_KEY_MAP } from "./constants";
-import { prepareCombination } from "./utils";
+import { prepareKeyBinding } from "./utils";
 
 export interface IKeyBinderDelegate {
-    didMatchFound: (binder: KeyBinder, combinations: IKeyBindCombination[], target: EventTarget) => void;
+    didMatchFound: (binder: KeyBinder, keyBindings: IKeyBinding[], target: EventTarget) => void;
 }
 
 export default class KeyBinder {
     public delegate: IKeyBinderDelegate;
     private _keyboard: Keyboard;
-    private _paused: boolean;
-    private readonly _combinations: Map<string, IKeyBindCombination>;
+    private _disabled: boolean;
+    private readonly _bindings: Map<string, IKeyBinding>;
 
     constructor(options: IKeyBinderOptions = {}) {
         const {
-            combinations = [],
-            autoPlay = true,
+            bindings = [],
+            disabled = false,
             target
         } = options;
 
         this._keyboard = (target && target instanceof EventTarget) ? new Keyboard(target) : keyboard;
-        this._combinations = new Map();
-        this._paused = true;
+        this._bindings = new Map();
+        this._disabled = disabled;
 
-        combinations.map(this.bind);
+        bindings.map(this.bind);
 
-        if (autoPlay) {
-            this.play();
+        if (!disabled) {
+            this.enable();
         }
     }
 
-    public get paused(): boolean {
-        return this._paused;
+    public get disabled(): boolean {
+        return this._disabled;
     }
 
-    public play() {
+    public enable() {
         this._keyboard.getStream("keydown").pipe(this._onKeyboardKeyDown);
-        this._paused = false;
+        this._disabled = false;
     }
 
-    public pause() {
+    public disable() {
         this._keyboard.getStream("keydown").unpipe(this._onKeyboardKeyDown);
-        this._paused = true;
+        this._disabled = true;
     }
 
-    public bind = (combination: IKeyBindCombination) => {
-        combination = prepareCombination(combination);
-        this._combinations.set(combination.id, combination);
+    public bind = (keyBindingOptions: Partial<IKeyBinding>): IKeyBinding => {
+        const keyBinding = prepareKeyBinding(keyBindingOptions);
+        this._bindings.set(keyBinding.id, keyBinding);
+
+        return keyBinding;
     }
 
-    public unbind(combinationId: string) {
-        this._combinations.delete(combinationId);
+    public unbind(keyBindingId: string) {
+        this._bindings.delete(keyBindingId);
     }
 
     public removeAll() {
-        this._combinations.clear();
+        this._bindings.clear();
     }
 
     private _onKeyboardKeyDown = (input: IKeyboardInput) => {
-        const matches: IKeyBindCombination[] =
-            Array.from(this._combinations.entries())
-                .map(([key, combination]) => combination)
-                .filter((combination) => this._checkCombination(input, combination));
+        const matches: IKeyBinding[] =
+            Array.from(this._bindings.entries())
+                .map(([key, keyBinding]) => keyBinding)
+                .filter((keyBinding) => this._checkBinding(input, keyBinding));
 
         if (matches.length && this.delegate) {
             this.delegate.didMatchFound(this, matches, this._keyboard.target);
         }
     }
 
-    private _checkCombination(input: IKeyboardInput, combination: IKeyBindCombination): boolean {
-        switch (combination.type) {
-            case CombinationType.Connection:
-                return this._checkConnectionCombination(input, combination);
-            case CombinationType.Sequence:
-                return this._checkSequenceCombination(input, combination);
+    private _checkBinding(input: IKeyboardInput, keyBinding: IKeyBinding): boolean {
+        switch (keyBinding.type) {
+            case KeyBindingType.Combination:
+                return this._checkCombinationBinding(input, keyBinding);
+            case KeyBindingType.Stream:
+                return this._checkStreamBinding(input, keyBinding);
         }
 
         return false;
     }
 
-    private _checkConnectionCombination(input: IKeyboardInput, combination: IKeyBindCombination): boolean {
+    private _checkCombinationBinding(input: IKeyboardInput, keyBinding: IKeyBinding): boolean {
         return every<boolean>([
 
             this._keyboard.activeKeys > 1,
 
-            every<string>(combination.parts, (key) => this._isActiveKey(key)),
+            every<string>(keyBinding.parts, (key) => this._isActiveKey(key)),
 
-            combination.strict
-                ? this._keyboard.activeKeys === combination.parts.length
+            keyBinding.strict
+                ? this._keyboard.activeKeys === keyBinding.parts.length
                 : true
         ]);
     }
 
-    private _checkSequenceCombination(input: IKeyboardInput, combination: IKeyBindCombination): boolean {
-        const sequenceParts = combination.parts;
-        const isMatchKey = this._isInputMatchKey(input, sequenceParts[combination.sequence]);
+    private _checkStreamBinding(input: IKeyboardInput, keyBinding: IKeyBinding): boolean {
+        const streamParts = keyBinding.parts;
+        const isMatchKey = this._isInputMatchKey(input, streamParts[keyBinding.sequence]);
 
         if (isMatchKey) {
-            if (combination.sequence === sequenceParts.length - 1) {
-                this._resetCombination(combination);
-                return combination.strict
+            if (keyBinding.sequence === streamParts.length - 1) {
+                this._resetBinding(keyBinding);
+                return keyBinding.strict
                     ? this._keyboard.activeKeys === 1
                     : true;
             }
 
-            combination.sequence++;
+            keyBinding.sequence++;
 
-            window.clearTimeout(combination.sequenceTimer);
+            window.clearTimeout(keyBinding.sequenceTimer);
 
-            combination.sequenceTimer = setTimeout(() => {
-                this._resetCombination(combination);
-            }, combination.delay);
+            keyBinding.sequenceTimer = setTimeout(() => {
+                this._resetBinding(keyBinding);
+            }, keyBinding.delay);
         } else {
-            this._resetCombination(combination);
+            this._resetBinding(keyBinding);
         }
 
         return false;
     }
 
-    private _resetCombination(combination: IKeyBindCombination) {
-        window.clearTimeout(combination.sequenceTimer);
-        combination.sequenceTimer = null;
-        combination.sequence = 0;
+    private _resetBinding(keyBinding: IKeyBinding) {
+        window.clearTimeout(keyBinding.sequenceTimer);
+        keyBinding.sequenceTimer = null;
+        keyBinding.sequence = 0;
     }
 
     private _isInputMatchKey(input: IKeyboardInput, key: string): boolean {
@@ -142,7 +144,7 @@ export default class KeyBinder {
     }
 
     public destroy() {
-        this.pause();
+        this.disable();
         this.removeAll();
 
         if (this._keyboard !== keyboard) {

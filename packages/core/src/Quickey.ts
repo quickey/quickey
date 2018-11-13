@@ -1,30 +1,30 @@
 import { guid } from "@quickey/shared/lib/utils";
-import { KeyBinder, IKeyBinderDelegate, IKeyBindCombination } from "@quickey/binder";
+import { PubSub } from "@quickey/shared";
+import { KeyBinder, IKeyBinderDelegate, IKeyBinding, KeyBindingType } from "@quickey/binder";
 
-export type ActionCallback = (combination?: IKeyBindCombination, target?: EventTarget) => void;
+export type ActionCallback = (keyBinding?: IKeyBinding, target?: EventTarget) => void;
 export type OnDestroyCallback = (quickey: Quickey) => void;
 
-interface IAction {
-    id?: string;
-    keys: string;
+export interface IActionOptions extends Pick<IKeyBinding, Exclude<keyof IKeyBinding, "sequence" | "sequenceTimer" | "type" | "parts">> {
     description?: string;
     callback: ActionCallback;
 }
 
-export interface IQuickeyActionOptions extends IAction {
-    delay?: number;
-    strict?: boolean;
+export interface IAction extends Pick<IActionOptions, Exclude<keyof IActionOptions, "strict" | "delay" | "keys">> {
+    type: KeyBindingType;
+    parts: string[];
 }
 
 export interface IQuickeyOptions {
+    id?: string;
     title?: string;
-    description?: string;
-    actions?: IQuickeyActionOptions[];
+    actions?: IActionOptions[];
     onDestroy?: OnDestroyCallback;
     target?: EventTarget;
 }
 
-export default class Quickey implements IKeyBinderDelegate {
+export default class Quickey extends PubSub implements IKeyBinderDelegate {
+    private _id: string;
     private _keyBinder: KeyBinder;
     private _actions: Map<string, IAction>;
     private _onDestroy: OnDestroyCallback;
@@ -32,11 +32,13 @@ export default class Quickey implements IKeyBinderDelegate {
     private _description: string;
 
     constructor(options: IQuickeyOptions = {}) {
+        super();
+
         options.actions = options.actions || [];
 
+        this._id = options.id || guid();
         this._actions = new Map<string, IAction>();
         this._title = options.title;
-        this._description = options.description;
         this._keyBinder = new KeyBinder({
             target: options.target
         });
@@ -46,67 +48,81 @@ export default class Quickey implements IKeyBinderDelegate {
         options.actions.map(this.addAction);
     }
 
+    public get id(): string {
+        return this._id;
+    }
+
     public get title(): string {
-        return this._title;
+        return this._title || "";
     }
 
     public get description(): string {
-        return this._description;
+        return this._description || "";
     }
 
-    public get paused(): boolean {
-        return this._keyBinder.paused;
+    public get disabled(): boolean {
+        return this._keyBinder.disabled;
     }
 
-    public addAction = (actionOrActions: IQuickeyActionOptions | IQuickeyActionOptions[]) => {
+    public get actions(): IAction[] {
+        return Array.from(this._actions.values());
+    }
+
+    public addAction = (actionOrActions: IActionOptions | IActionOptions[]): Quickey => {
         if (!(actionOrActions instanceof Array)) {
             actionOrActions = [actionOrActions];
         }
 
         for (const action of actionOrActions) {
             const id = action.id || guid();
-            const { keys, delay, strict, callback, description } = action;
+            const { keys, delay, strict, callback, description = "" } = action;
 
-            this._actions.set(id, {
-                id,
-                keys,
-                callback,
-                description
-            });
-
-            this._keyBinder.bind({
+            const { parts, type } = this._keyBinder.bind({
                 id,
                 keys,
                 delay,
                 strict
             });
+
+            this._actions.set(id, {
+                id,
+                type,
+                parts,
+                callback,
+                description
+            });
         }
+
+        this.update();
 
         return this;
     }
 
-    public play() {
-        this._keyBinder.play();
+    public enable() {
+        this._keyBinder.enable();
     }
 
-    public pause() {
-        this._keyBinder.pause();
+    public disable() {
+        this._keyBinder.disable();
     }
 
     public destroy() {
         this.removeAllActions();
         this._keyBinder.destroy();
         this._onDestroy && this._onDestroy(this);
+        this.removeAllSubscriptions();
     }
 
-    public removeAction(actionId: string) {
+    public removeAction(actionId: string): Quickey {
         this._actions.delete(actionId);
         this._keyBinder.unbind(actionId);
+
+        this.update();
 
         return this;
     }
 
-    public removeAllActions() {
+    public removeAllActions(): Quickey {
         this._actions.clear();
         this._keyBinder.removeAll();
 
@@ -114,16 +130,16 @@ export default class Quickey implements IKeyBinderDelegate {
     }
 
     /**
-     * IKeyBinderDelegate matched combination callback
+     * IKeyBinderDelegate matched key binding callback
      *
      * @param {KeyBinder} binder
-     * @param {IKeyBindCombination[]} combinations
+     * @param {IKeyBinding[]} keyBindings
      * @memberof Quickey
      */
-    public didMatchFound(binder: KeyBinder, combinations: IKeyBindCombination[], target: EventTarget) {
-        for (const combination of combinations) {
-            const action = this._actions.get(combination.id);
-            action && action.callback(combination, target);
+    public didMatchFound(binder: KeyBinder, keyBindings: IKeyBinding[], target: EventTarget) {
+        for (const keyBinding of keyBindings) {
+            const action = this._actions.get(keyBinding.id);
+            action && action.callback(keyBinding, target);
         }
     }
 }

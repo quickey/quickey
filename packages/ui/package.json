@@ -1,18 +1,12 @@
 {
-  "name": "@quickey/binder",
+  "name": "@quickey/ui",
   "version": "0.0.2-alpha.0",
-  "description": "Subscribe to keyboard key bindings",
+  "description": "Create UI to dispaly Quickey actions",
   "author": "Udi Talias <udi.talias@gmail.com>",
   "homepage": "https://github.com/quickey/quickey#readme",
   "license": "MIT",
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
+  "main": "umd/quickey.ui.min.js",
   "files": [
-    "lib",
     "umd"
   ],
   "publishConfig": {
@@ -23,17 +17,23 @@
     "url": "git+https://github.com/quickey/quickey.git"
   },
   "scripts": {
-    "tsc": "tsc",
-    "tsc:watch": "tsc -w",
     "test": "jest --color",
     "test:watch": "jest --watch --color",
+    "tsc:watch": "webpack --watch --color",
     "build:umd": "webpack"
-  },
-  "dependencies": {
-    "@quickey/keyboard": "^0.0.2-alpha.0",
-    "@quickey/shared": "^0.0.2-alpha.0"
   },
   "bugs": {
     "url": "https://github.com/quickey/quickey/issues"
+  },
+  "devDependencies": {
+    "@quickey/core": "^0.0.2-alpha.0",
+    "css-loader": "^1.0.1",
+    "mini-css-extract-plugin": "^0.4.4",
+    "node-sass": "^4.10.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1"
+  },
+  "dependencies": {
+    "preact": "8.3.1"
   }
 }

@@ -1,0 +1,22 @@
+.quickey-search-bar {
+    padding: 0 10px;
+    margin-bottom: 10px;
+
+    input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 7px;
+        border: none;
+        background-color: #fff;
+        box-shadow: 0 5px 30px rgba(0, 0, 0, .1);
+        font-size: 14px;
+
+        &:focus {
+            outline: none;
+        }
+
+        &::placeholder {
+            color: #5B6770;
+        }
+    }
+}

@@ -1,9 +1,11 @@
 import KeyBinder, { IKeyBinderDelegate } from "./KeyBinder";
-import { IKeyBindCombination, IKeyBinderOptions } from "./interfaces";
+import { IKeyBinding, IKeyBinderOptions } from "./interfaces";
+import { KeyBindingType } from "./enums";
 
 export {
     KeyBinder,
     IKeyBinderDelegate,
-    IKeyBindCombination,
-    IKeyBinderOptions
+    IKeyBinding,
+    IKeyBinderOptions,
+    KeyBindingType
 };

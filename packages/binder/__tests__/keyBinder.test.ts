@@ -18,19 +18,19 @@ describe('KeyBinder', () => {
             expect(keyBinder).toBeDefined();
         });
 
-        it('should return pause state', () => {
-            keyBinder = new KeyBinder({ autoPlay: true });
+        it('should return disabled state', () => {
+            keyBinder = new KeyBinder({ disabled: false });
 
-            expect(keyBinder.paused).toBe(false);
+            expect(keyBinder.disabled).toBe(false);
 
-            keyBinder.pause();
+            keyBinder.disable();
 
-            expect(keyBinder.paused).toBe(true);
+            expect(keyBinder.disabled).toBe(true);
         });
     });
 
-    describe('sequence combination', () => {
-        it('should activate action when sequence combination recorded', () => {
+    describe('stream binding', () => {
+        it('should activate action when stream binding recorded', () => {
 
             keyBinder = new KeyBinder();
 
@@ -78,8 +78,8 @@ describe('KeyBinder', () => {
         });
     });
 
-    describe('connection combination', () => {
-        it('should activate action when connection combination recorded', () => {
+    describe('connection binding', () => {
+        it('should activate action when connection binding recorded', () => {
 
             keyBinder = new KeyBinder();
 
@@ -98,7 +98,7 @@ describe('KeyBinder', () => {
             expect(keyBinder.delegate.didMatchFound).toBeCalledTimes(1);
         });
 
-        it('should not activate action when connection combination strict mode on', () => {
+        it('should not activate action when connection binding strict mode on', () => {
 
             keyBinder = new KeyBinder();
 

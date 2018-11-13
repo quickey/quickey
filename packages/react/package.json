@@ -22,9 +22,6 @@
     "type": "git",
     "url": "git+https://github.com/quickey/quickey.git"
   },
-  "dependencies": {
-    "@quickey/core": "^0.0.2-alpha.0"
-  },
   "scripts": {
     "tsc": "tsc",
     "tsc:watch": "tsc -w",
@@ -35,11 +32,13 @@
   "bugs": {
     "url": "https://github.com/quickey/quickey/issues"
   },
+  "dependencies": {
+    "@quickey/core": "^0.0.2-alpha.0"
+  },
   "peerDependencies": {
     "react": ">= 16.3"
   },
   "devDependencies": {
-    "@types/react": "16.7.3",
     "@types/webpack-env": "1.13.6",
     "clean-webpack-plugin": "0.1.19",
     "enzyme": "3.7.0",

@@ -1,4 +1,4 @@
-export enum CombinationType {
-    Sequence = 1,
-    Connection
+export enum KeyBindingType {
+    Stream = 1,
+    Combination
 }

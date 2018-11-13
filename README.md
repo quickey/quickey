@@ -17,7 +17,11 @@
 
 ## Intro
 
-Quickey is a tool that helps you bind keyboard key combinations to actions in your web app. You can bind multiple actions to specific elements in your page to help your users navigate your application more efficiently and easily.
+Quickey is a tool that helps you bind keyboard keys to actions in your web app. You can bind multiple actions to specific elements in your page to help your users navigate your application more efficiently and easily. It also includes UI elements that can be easily integrated in your web app.
+
+<p align="center">
+    <img alt="quickey" width="640"  src="https://raw.githubusercontent.com/quickey/quickey/master/assets/ui.png"/>
+</p>
 
 ## Quickey Start
 
@@ -61,7 +65,7 @@ const quickey = createQuickey();
 const { id } = quickey
     .addAction({
         keys: "I > D > D > Q > D",
-        callback: (combination, target) => {
+        callback: (keyBinding, target) => {
             console.log("GOD Mode!");
         }
     });
@@ -85,7 +89,7 @@ Each package has its own documentations, explore the list of packages below.
 - [@quickey/keyboard](packages/keyboard/README.md)
 
 ### UI 🌈
-- ~~@quickey/ui~~
+- [@quickey/ui](packages/ui/README.md)
 - [@quickey/react](packages/react/README.md)
 - ~~@quickey/vue~~
 - ~~@quickey/angular~~

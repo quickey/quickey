@@ -1,5 +1,5 @@
 import * as React from "react";
-import { createQuickey, IQuickeyOptions, IQuickeyActionOptions } from "@quickey/core";
+import { createQuickey, IQuickeyOptions, IAction } from "@quickey/core";
 import Quickey from "@quickey/core/lib/Quickey";
 
 export interface IQuickeyContextProps extends Pick<IQuickeyOptions, Exclude<keyof IQuickeyOptions, "target">>, React.HTMLAttributes<HTMLElement> {
@@ -58,7 +58,7 @@ export default class QuickeyContext extends React.Component<IQuickeyContextProps
         this._quickey.removeAction(actionId);
     }
 
-    public addAction(actionOrActions: IQuickeyActionOptions | IQuickeyActionOptions[]) {
+    public addAction(actionOrActions: IAction | IAction[]) {
         this._quickey.addAction(actionOrActions);
     }
 

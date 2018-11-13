@@ -9,7 +9,7 @@
                                |___/ 
 **************************************/
 
-import Quickey, { IQuickeyOptions, IQuickeyActionOptions, ActionCallback, OnDestroyCallback } from "./Quickey";
+import Quickey, { IQuickeyOptions, IAction, IActionOptions, ActionCallback, OnDestroyCallback } from "./Quickey";
 
 const quickeys: Quickey[] = [
     /**
@@ -37,12 +37,18 @@ function create(options: IQuickeyOptions): Quickey {
     return new Quickey(enhanceOptions(options));
 }
 
+function queryByQuickeyId(ids: string | string[], quickey: Quickey): boolean {
+    return (ids instanceof Array)
+        ? !!~ids.indexOf(quickey.id)
+        : quickey.id === ids;
+}
+
 function createQuickey(options?: IQuickeyOptions): Quickey;
 function createQuickey(options?: IQuickeyOptions[]): Quickey[];
 function createQuickey(options?: IQuickeyOptions | IQuickeyOptions[]): Quickey | Quickey[] {
     if (!(options instanceof Array)) {
         const q = create(options);
-        
+
         quickeys.push(q);
 
         return q;
@@ -55,10 +61,25 @@ function createQuickey(options?: IQuickeyOptions | IQuickeyOptions[]): Quickey |
     return qs;
 }
 
+function getQuickeyInstance(ids: string): Quickey;
+function getQuickeyInstance(ids: string[]): Quickey[];
+function getQuickeyInstance(ids: string | string[]): Quickey | Quickey[] {
+    const query = queryByQuickeyId.bind(null, ids);
+
+    if (ids instanceof Array) {
+        return quickeys.filter(query);
+    }
+
+    return quickeys.find(query);
+}
+
 export {
     IQuickeyOptions,
-    IQuickeyActionOptions,
+    IActionOptions,
+    IAction,
     ActionCallback,
     OnDestroyCallback,
-    createQuickey
+    Quickey,
+    createQuickey,
+    getQuickeyInstance
 };
