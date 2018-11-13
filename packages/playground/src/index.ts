@@ -1,4 +1,4 @@
-import "@quickey/ui/lib/styles/quickey.scss";
+import "@quickey/ui/lib/legend/styles/legend.scss";
 import { createQuickey } from "@quickey/core";
 import { createQuickeyLegend } from "@quickey/ui";
 import "./reactRenderer";

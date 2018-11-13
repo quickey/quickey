@@ -1,3 +1,3 @@
-import "./styles/quickey.scss";
+import "./legend/styles/legend.scss";
 
 export { createQuickeyLegend } from "./index";
