@@ -62,7 +62,7 @@ Type: `constructor`
 
 Type: `EventTarget`
 
-The target EventTarget to bind keyboard events.
+The target EventTarget to bind keyboard events
 
 #### .getStream([event])
 
