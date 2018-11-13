@@ -1,4 +1,4 @@
-.quickey-box {
+.quickey-legend {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -15,11 +15,11 @@
         font-size: 18px;
     }
 
-    .quickey-box-items {
+    .quickey-legend-items {
         overflow-y: auto;
     }
 
-    .quickey-box-no-actions {
+    .quickey-legend-no-actions {
         text-align: center;
 
         h2 {

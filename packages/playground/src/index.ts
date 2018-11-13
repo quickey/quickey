@@ -1,5 +1,6 @@
+import "@quickey/ui/lib/styles/quickey.scss";
 import { createQuickey } from "@quickey/core";
-import { create } from "@quickey/ui";
+import { createQuickeyLegend } from "@quickey/ui";
 import "./reactRenderer";
 
 createQuickey({
@@ -98,38 +99,38 @@ createQuickey({
         }
     })
 
-    createQuickey({
-        id: "game",
-        title: "Game Play"
+createQuickey({
+    id: "game",
+    title: "Game Play"
+})
+    .addAction({
+        keys: "Ctrl + +",
+        description: "Map zoom in",
+        callback: (_, target: HTMLElement) => {
+
+        }
     })
-        .addAction({
-            keys: "Ctrl + +",
-            description: "Map zoom in",
-            callback: (_, target: HTMLElement) => {
-    
-            }
-        })
-        .addAction({
-            keys: "Ctrl + -",
-            description: "Map zoom out",
-            callback: (_, target: HTMLElement) => {
-    
-            }
-        })
-        .addAction({
-            keys: "Ctrl + F1",
-            description: "Show help screen",
-            callback: (_, target: HTMLElement) => {
-    
-            }
-        })
-        .addAction({
-            keys: "Ctrl + Q",
-            description: "Exit game",
-            callback: (_, target: HTMLElement) => {
-    
-            }
-        })
+    .addAction({
+        keys: "Ctrl + -",
+        description: "Map zoom out",
+        callback: (_, target: HTMLElement) => {
+
+        }
+    })
+    .addAction({
+        keys: "Ctrl + F1",
+        description: "Show help screen",
+        callback: (_, target: HTMLElement) => {
+
+        }
+    })
+    .addAction({
+        keys: "Ctrl + Q",
+        description: "Exit game",
+        callback: (_, target: HTMLElement) => {
+
+        }
+    })
 
 
 createQuickey({
@@ -149,7 +150,7 @@ createQuickey({
     });
 
 
-const ui = create({
+const destroy = createQuickeyLegend({
     el: document.querySelector("#ui"),
     searchBarPlaceholder: "Search shortcut...",
     ids: ["cheats", "game"],
@@ -157,6 +158,3 @@ const ui = create({
         width: 640
     }
 });
-
-ui.show();
-// ui.hide();

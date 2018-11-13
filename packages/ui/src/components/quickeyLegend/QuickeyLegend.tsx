@@ -4,7 +4,7 @@ import QuickeyItem from "../quickeyItem/QuickeyItem";
 import SearchBar from "../searchBar/SearchBar";
 import Footer from "../footer/Footer";
 
-export interface IQuickeyBoxProps {
+export interface IQuickeyLegendProps {
     quickeys: Quickey[];
     title: string;
     showCredits: boolean;
@@ -12,13 +12,13 @@ export interface IQuickeyBoxProps {
     style: any;
 }
 
-export interface IQuickeyBoxState {
+export interface IQuickeyLegendState {
     query: string;
 }
 
 const filterActions = (actions, query) => actions.filter((a) => !!~a.description.toLowerCase().indexOf(query));
 
-export default class QuickeyBox extends Component<IQuickeyBoxProps, IQuickeyBoxState> {
+export default class QuickeyLegend extends Component<IQuickeyLegendProps, IQuickeyLegendState> {
     state = { query: "" };
 
     private onSearch = (e) => {
@@ -33,10 +33,10 @@ export default class QuickeyBox extends Component<IQuickeyBoxProps, IQuickeyBoxS
         let hasActionsForQuery = false;
 
         return (
-            <div className="quickey-box" style={style}>
+            <div className="quickey-legend" style={style}>
                 <h1>{title}</h1>
                 <SearchBar placeholder={searchBarPlaceholder} onSearch={this.onSearch} query={query} />
-                <div className="quickey-box-items">
+                <div className="quickey-legend-items">
                     {quickeys.map((q) => {
 
                         const filteredActions = filterActions(q.actions, queryLowerCased);
@@ -58,7 +58,7 @@ export default class QuickeyBox extends Component<IQuickeyBoxProps, IQuickeyBoxS
                     })}
                 </div>
                 {!hasActionsForQuery ? (
-                    <div className="quickey-box-no-actions">
+                    <div className="quickey-legend-no-actions">
                         <h2>🙈</h2>
                         <h3>No shortcuts found for `{query}`</h3>
                     </div>
