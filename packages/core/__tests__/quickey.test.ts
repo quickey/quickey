@@ -14,18 +14,15 @@ describe('Quickey', () => {
         expect(quickey).toBeDefined();
     });
 
-    it('should get title and description', () => {
+    it('should get title', () => {
         const title = "DOOM Cheats";
-        const description = "This is the DOOM game cheats activator";
 
         quickey = new Quickey({
-            title,
-            description
+            title
         });
 
         expect(quickey).toBeDefined();
         expect<string>(quickey.title).toBe(title);
-        expect<string>(quickey.description).toBe(description);
     });
 
     it('should return instance after adding or removing action', () => {
