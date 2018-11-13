@@ -20,7 +20,7 @@
 Quickey is a tool that helps you bind keyboard keys to actions in your web app. You can bind multiple actions to specific elements in your page to help your users navigate your application more efficiently and easily. It also includes UI elements that can be easily integrated in your web app.
 
 <p align="center">
-    <img alt="quickey" width="640"  src="https://raw.githubusercontent.com/quickey/quickey/master/assets/ui.png"/>
+    <img alt="quickey" src="https://raw.githubusercontent.com/quickey/quickey/master/assets/ui.png"/>
 </p>
 
 Checkout [@quickey/ui](packages/ui/README.md) for details.
