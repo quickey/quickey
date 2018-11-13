@@ -1,4 +1,3 @@
-import "./theme.scss";
 import { h } from "preact";
 
 export interface IFooterProps {

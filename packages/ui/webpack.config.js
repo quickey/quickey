@@ -9,7 +9,7 @@ const contextPath = path.join(__dirname, './src');
 
 const base = {
     entry: {
-        app: "index.ts"
+        app: "umd.ts"
     },
 
     output: {

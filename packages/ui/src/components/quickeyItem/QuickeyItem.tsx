@@ -1,9 +1,9 @@
-import "./theme.scss";
 import { h } from "preact";
 import { IAction } from "@quickey/core";
 import QuickeyAction from "../quickeyAction/QuickeyAction";
 
 export interface IQuickeyItemProps {
+    key: any;
     actions: IAction[];
     title: string;
     description: string;

@@ -1,7 +1,7 @@
-import "./theme.scss";
 import { h } from "preact";
 
 export interface IKeyProps {
+    key: any;
     keyName: string;
     includeBindingType: boolean;
     type: number;

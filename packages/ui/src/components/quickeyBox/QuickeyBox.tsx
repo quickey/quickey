@@ -1,4 +1,3 @@
-import "./theme.scss";
 import { h, Component } from "preact";
 import { Quickey } from "@quickey/core";
 import QuickeyItem from "../quickeyItem/QuickeyItem";

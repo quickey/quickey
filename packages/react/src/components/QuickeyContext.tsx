@@ -1,6 +1,6 @@
 import * as React from "react";
-import { createQuickey, IQuickeyOptions, IAction } from "@quickey/core";
-import Quickey from "@quickey/core/lib/Quickey";
+import { createQuickey, IQuickeyOptions } from "@quickey/core";
+import Quickey, { IActionOptions } from "@quickey/core/lib/Quickey";
 
 export interface IQuickeyContextProps extends Pick<IQuickeyOptions, Exclude<keyof IQuickeyOptions, "target">>, React.HTMLAttributes<HTMLElement> {
     type?: string;
@@ -29,11 +29,10 @@ export default class QuickeyContext extends React.Component<IQuickeyContextProps
     }
 
     public componentDidMount() {
-        const { global, title, description, actions, onDestroy } = this.props;
+        const { global, title, actions, onDestroy } = this.props;
 
         const options: IQuickeyOptions = {
             title,
-            description,
             actions,
             onDestroy
         };
@@ -58,12 +57,12 @@ export default class QuickeyContext extends React.Component<IQuickeyContextProps
         this._quickey.removeAction(actionId);
     }
 
-    public addAction(actionOrActions: IAction | IAction[]) {
+    public addAction(actionOrActions: IActionOptions | IActionOptions[]) {
         this._quickey.addAction(actionOrActions);
     }
 
     public render(): React.ReactNode {
-        const { global, type, title, description, actions, onDestroy, ...others } = this.props;
+        const { global, type, title, actions, onDestroy, ...others } = this.props;
         const { children } = this.props;
 
         if (global) {

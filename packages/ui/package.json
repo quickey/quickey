@@ -5,8 +5,14 @@
   "author": "Udi Talias <udi.talias@gmail.com>",
   "homepage": "https://github.com/quickey/quickey#readme",
   "license": "MIT",
-  "main": "umd/quickey.ui.min.js",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
   "files": [
+    "lib",
     "umd"
   ],
   "publishConfig": {
@@ -17,9 +23,10 @@
     "url": "git+https://github.com/quickey/quickey.git"
   },
   "scripts": {
+    "tsc": "gulp",
+    "tsc:watch": "gulp watch",
     "test": "jest --color",
     "test:watch": "jest --watch --color",
-    "tsc:watch": "webpack --watch --color",
     "build:umd": "webpack"
   },
   "bugs": {
@@ -27,11 +34,14 @@
   },
   "devDependencies": {
     "@quickey/core": "^0.0.2-alpha.0",
-    "css-loader": "^1.0.1",
-    "mini-css-extract-plugin": "^0.4.4",
-    "node-sass": "^4.10.0",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1"
+    "css-loader": "1.0.1",
+    "gulp": "3.9.1",
+    "gulp-typescript": "5.0.0-alpha.3",
+    "gulp-watch": "5.0.1",
+    "mini-css-extract-plugin": "0.4.4",
+    "node-sass": "4.10.0",
+    "sass-loader": "7.1.0",
+    "style-loader": "0.23.1"
   },
   "dependencies": {
     "preact": "8.3.1"
