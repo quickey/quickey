@@ -72,8 +72,6 @@ Creates a new KeyBinder.
 
 Type: `object` - optional
 
-KeyBinder options.
-
 ###### bindings
 
 Type: `Array`
@@ -94,13 +92,19 @@ KeyBinder creates a [Keyboard](/packages/keyboard/README.md) under the hood, thi
 
 > All options are optionals
 
+#
+
 #### .disable()
 
 Disables the key binder.
 
+#
+
 #### .enable()
 
 Enables the key binder.
+
+#
 
 #### .bind([keyBindingOptions])
 
@@ -114,7 +118,7 @@ Type: `object`
 
 Type: `string` - optional
 
-You can supply an id to the bindings so you can
+You can supply an id to the key binding so you can
 remove it later if you want to.
 
 ###### keys
@@ -144,6 +148,8 @@ Type: `boolean`
 In Combination bindings, strict mode will activate only if the binded keys are the only active keys in the keyboard.  
 In Stream bindings, each key must be released before the next one is active.
 
+#
+
 #### .bind([keyBindingId])
 
 Unsubscribe from key binding.
@@ -152,25 +158,33 @@ Unsubscribe from key binding.
 
 Type: `string`
 
+#
+
 #### .removeAll()
 
 Unsubscribe all key bindings.
+
+#
 
 #### .destroy()
 
 Unsubscribe all key bindings and destroys the [Keyboard](/packages/keyboard/README.md).
 
-#### .disabled
+#
 
-Get the key binder disabled state.
+#### .disabled
 
 Type: `boolean`
 
+Get the key binder disabled state.
+
+#
+
 #### .delegate
 
-Attach a delegate to KeyBinder instance.
-
 Type: `object`
+
+Attach a delegate to KeyBinder instance.
 
 ##### didMatchFound([binder,matches,target])
 

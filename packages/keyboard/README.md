@@ -64,6 +64,8 @@ Type: `EventTarget`
 
 The target EventTarget to bind keyboard events.
 
+#
+
 #### .getStream([event])
 
 Get or create event stream.
@@ -75,6 +77,8 @@ Type: `string`
 Can be any keyboard event name (e.g. `keyup`, `keydown`).
 
 Returns: `KeyboardEventReadStream`
+
+#
 
 #### .createEventReadStream([event])
 
@@ -88,6 +92,8 @@ Can be any keyboard event name (e.g. `keyup`, `keydown`).
 
 Returns: `KeyboardEventReadStream`
 
+#
+
 #### .isKeyActive([key])
 
 Checks if a key is active (pressed down).
@@ -100,19 +106,27 @@ The key, character or name, lower cased (e.g. `a`, `b`, `control`, `alt`).
 
 Returns: `boolean`
 
+#
+
 #### .reset()
 
 Reset active keys.
 
+#
+
 #### .destroy()
 
 Destroys the keyboard and closes all streams.
+
+#
 
 #### .target
 
 Type: `EventTarget`
 
 Get the keyboard target.
+
+#
 
 #### .activeKeys
 
@@ -142,6 +156,8 @@ Type: `EventTarget`
 
 The stream target.
 
+#
+
 #### .pipe([targetStream])
 
 Pipe the event to the given stream.
@@ -151,6 +167,8 @@ Pipe the event to the given stream.
 Type: `KeyboardEventWriteStream`
 
 Returns: Current `KeyboardEventReadStream` instance.
+
+#
 
 #### .unpipe([targetStream])
 
@@ -162,9 +180,13 @@ Type: `KeyboardEventWriteStream`
 
 Returns: Current `KeyboardEventReadStream` instance.
 
+#
+
 #### .close()
 
 Closes the stream.
+
+#
 
 #### .isOpen
 

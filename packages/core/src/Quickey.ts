@@ -29,7 +29,6 @@ export default class Quickey extends PubSub implements IKeyBinderDelegate {
     private _actions: Map<string, IAction>;
     private _onDestroy: OnDestroyCallback;
     private _title: string;
-    private _description: string;
 
     constructor(options: IQuickeyOptions = {}) {
         super();
@@ -54,10 +53,6 @@ export default class Quickey extends PubSub implements IKeyBinderDelegate {
 
     public get title(): string {
         return this._title || "";
-    }
-
-    public get description(): string {
-        return this._description || "";
     }
 
     public get disabled(): boolean {
