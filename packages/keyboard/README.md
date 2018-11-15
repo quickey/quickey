@@ -196,4 +196,4 @@ Type: `number`
 
 Returns: `boolean` | `void`
 
-[&larr; Go back](/) to Quickey
+[&larr; Go back](/README.md) to Quickey
