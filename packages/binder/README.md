@@ -196,4 +196,5 @@ Type: `EventTarget`
 
 The key binder keyboard target.
 
+---
 [&larr; Go back](/README.md) to Quickey
