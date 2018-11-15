@@ -4,7 +4,7 @@
 
 ## Intro
 
-Quickey Keyboard is a tool which simplify the way you add listeners to keyboard events. instead of creating event listeners, the keyboard creates only one listener and pipes it to your streams.
+Quickey Keyboard is a tool that simplify the way you add listeners to keyboard events. instead of creating event listeners, the keyboard creates only one listener and pipes it to your streams.
 
 ## Install
 
@@ -54,71 +54,71 @@ For your convenience, we created this [**Fiddle**](http://jsfiddle.net/udidu/y2v
 
 #### Keyboard([target])
 
-Creates a new keyboard
-
 Type: `constructor`
+
+Creates a new keyboard.
 
 ##### target
 
 Type: `EventTarget`
 
-The target EventTarget to bind keyboard events
+The target EventTarget to bind keyboard events.
 
 #### .getStream([event])
 
-Get or create event stream
+Get or create event stream.
 
 ##### event
 
 Type: `string`
 
-Can be any keyboard event name (e.g. `keyup`, `keydown`)
+Can be any keyboard event name (e.g. `keyup`, `keydown`).
 
 Returns: `KeyboardEventReadStream`
 
 #### .createEventReadStream([event])
 
-Create event stream
+Create event stream.
 
 ##### event
 
 Type: `string`
 
-Can be any keyboard event name (e.g. `keyup`, `keydown`)
+Can be any keyboard event name (e.g. `keyup`, `keydown`).
 
 Returns: `KeyboardEventReadStream`
 
 #### .isKeyActive([key])
 
-Checks if a key is active (pressed down)
+Checks if a key is active (pressed down).
 
 ##### key
 
 Type: `string`
 
-The key, character or name, lower cased (e.g. `a`, `b`, `control`, `alt`)
+The key, character or name, lower cased (e.g. `a`, `b`, `control`, `alt`).
 
 Returns: `boolean`
 
 #### .reset()
 
-Reset active keys
+Reset active keys.
 
 #### .destroy()
 
-Destroys the keyboard and closes all streams
+Destroys the keyboard and closes all streams.
 
 #### .target
 
-Get the keyboard target
-
 Type: `EventTarget`
+
+Get the keyboard target.
 
 #### .activeKeys
 
-Get the number of active keys
-
 Type: `number`
+
+Get the number of active keys.
 
 ---
 
@@ -126,51 +126,51 @@ Type: `number`
 
 #### KeyboardEventReadStream([event,target])
 
-Creates a new KeyboardEventReadStream
-
 Type: `constructor`
+
+Creates a new KeyboardEventReadStream.
 
 ##### event
 
 Type: `string`
 
-Can be any keyboard event name (e.g. `keyup`, `keydown`)
+Can be any keyboard event name (e.g. `keyup`, `keydown`).
 
 ##### target
 
 Type: `EventTarget`
 
-The stream target
+The stream target.
 
 #### .pipe([targetStream])
 
-Pipe the event to the given stream
+Pipe the event to the given stream.
 
 ##### targetStream
 
 Type: `KeyboardEventWriteStream`
 
-Returns: Current `KeyboardEventReadStream` instance
+Returns: Current `KeyboardEventReadStream` instance.
 
 #### .unpipe([targetStream])
 
-Unpipe the given stream
+Unpipe the given stream.
 
 ##### targetStream
 
 Type: `KeyboardEventWriteStream`
 
-Returns: Current `KeyboardEventReadStream` instance
+Returns: Current `KeyboardEventReadStream` instance.
 
 #### .close()
 
-Closes the stream
+Closes the stream.
 
 #### .isOpen
 
-Get the current state of the stream
-
 Type: `boolean`
+
+Get the current state of the stream.
 
 ---
 
