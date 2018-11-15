@@ -178,9 +178,9 @@ Type: `boolean`
 
 #### KeyboardEventWriteStream([input])
 
-A function that receives an input, if the function returns
-`false`, the write stream will stop for the given event and won't
-continue for the next stream
+A function that receives a keyboard input, if the function returns
+`false`, the write stream will stop the chain for the given event and won't
+continue for the next stream.
 
 ##### input
 
