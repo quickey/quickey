@@ -78,13 +78,13 @@ You can supply an id to the quickey object so you can access it later.
 
 Type: `string`
 
-Describe this object with a title/
+Describe this object with a title.
 
 ###### actions
 
 Type: `Array`
 
-A list of actions
+A list of actions.
 
 ###### onDestroy()
 
@@ -152,7 +152,9 @@ Type: `string` - optional
 
 Describe the action.
 
-###### callback
+###### callback([keyBinding,target])
+
+Type: `function`
 
 A callback to trigger when the action key combination is detected.
 

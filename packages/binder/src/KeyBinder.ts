@@ -65,7 +65,7 @@ export default class KeyBinder {
     private _onKeyboardKeyDown = (input: IKeyboardInput) => {
         const matches: IKeyBinding[] =
             Array.from(this._bindings.entries())
-                .map(([key, keyBinding]) => keyBinding)
+                .map(([_, keyBinding]) => keyBinding)
                 .filter((keyBinding) => this._checkBinding(input, keyBinding));
 
         if (matches.length && this.delegate) {
