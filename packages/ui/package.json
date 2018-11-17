@@ -1,6 +1,6 @@
 {
   "name": "@quickey/ui",
-  "version": "0.0.4-alpha.0",
+  "version": "0.0.5-alpha.0",
   "description": "Create UI to dispaly Quickey actions",
   "author": "Udi Talias <udi.talias@gmail.com>",
   "homepage": "https://github.com/quickey/quickey#readme",
@@ -33,7 +33,7 @@
     "url": "https://github.com/quickey/quickey/issues"
   },
   "devDependencies": {
-    "@quickey/core": "^0.0.4-alpha.0",
+    "@quickey/core": "^0.0.5-alpha.0",
     "css-loader": "1.0.1",
     "gulp": "3.9.1",
     "gulp-plumber": "^1.2.0",

@@ -1,6 +1,6 @@
 {
   "name": "@quickey/binder",
-  "version": "0.0.4-alpha.0",
+  "version": "0.0.5-alpha.0",
   "description": "Subscribe to keyboard key bindings",
   "author": "Udi Talias <udi.talias@gmail.com>",
   "homepage": "https://github.com/quickey/quickey#readme",
@@ -30,8 +30,8 @@
     "build:umd": "webpack"
   },
   "dependencies": {
-    "@quickey/keyboard": "^0.0.4-alpha.0",
-    "@quickey/shared": "^0.0.4-alpha.0"
+    "@quickey/keyboard": "^0.0.5-alpha.0",
+    "@quickey/shared": "^0.0.5-alpha.0"
   },
   "bugs": {
     "url": "https://github.com/quickey/quickey/issues"
