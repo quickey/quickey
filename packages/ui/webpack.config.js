@@ -32,12 +32,13 @@ const base = {
 
     externals: {
         "@quickey/core": {
-            root: 'Quickey.core',
+            root: ['Quickey', 'core'],
             commonjs2: '@quickey/core',
             commonjs: '@quickey/core',
             amd: '@quickey/core'
         }
     },
+
     plugins: [
         new MiniCssExtractPlugin({
             filename: "quickey.css"
