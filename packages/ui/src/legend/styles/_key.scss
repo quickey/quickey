@@ -18,8 +18,9 @@
         white-space: nowrap;
     }
 
-    .quickey-key-bind {
-        margin: 0 2px;
-        font-size: 12px;
+    &:last-child {
+        .quickey-key-binding-symbol {
+            display: none;
+        }
     }
 }

@@ -1,8 +1,8 @@
 import { getQuickeyInstance } from "@quickey/core";
-import QuickeyLegend from "./components/quickeyLegend/QuickeyLegend";
 import { h, render } from "preact";
+import QuickeyLegend from "./components/QuickeyLegend";
 
-interface IQuickeyLegendOptions {
+export interface IQuickeyLegendOptions {
     ids: string[];
     el: HTMLElement;
     title?: string;
@@ -11,7 +11,7 @@ interface IQuickeyLegendOptions {
     style?: any;
 }
 
-function createQuickeyLegend(options: IQuickeyLegendOptions): () => void {
+export function createQuickeyLegend(options: IQuickeyLegendOptions): () => void {
     options = Object.assign({}, {
         title: "Keyboard Shortcuts",
         searchBarPlaceholder: "Search shortcut...",
@@ -29,8 +29,3 @@ function createQuickeyLegend(options: IQuickeyLegendOptions): () => void {
 
     return () => render("", options.el, root);
 }
-
-export {
-    IQuickeyLegendOptions,
-    createQuickeyLegend
-};

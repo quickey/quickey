@@ -2,14 +2,14 @@ import { h } from "preact";
 
 export interface ISearchBarProps {
     onSearch: (e: KeyboardEvent) => void;
-    query: string;
+    value: string;
     placeholder: string;
 }
 
 export default function SearchBar(props: ISearchBarProps) {
     return (
         <div className="quickey-search-bar">
-            <input placeholder={props.placeholder} type="text" onInput={props.onSearch} value={props.query} />
+            <input placeholder={props.placeholder} type="text" onInput={props.onSearch} value={props.value} />
         </div>
     );
 }

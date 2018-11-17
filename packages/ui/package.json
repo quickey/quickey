@@ -36,6 +36,7 @@
     "@quickey/core": "^0.0.3-alpha.0",
     "css-loader": "1.0.1",
     "gulp": "3.9.1",
+    "gulp-plumber": "^1.2.0",
     "gulp-typescript": "5.0.0-alpha.3",
     "gulp-watch": "5.0.1",
     "mini-css-extract-plugin": "0.4.4",

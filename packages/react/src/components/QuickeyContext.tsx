@@ -29,9 +29,10 @@ export default class QuickeyContext extends React.Component<IQuickeyContextProps
     }
 
     public componentDidMount() {
-        const { global, title, actions, onDestroy } = this.props;
+        const { global, title, id, actions, onDestroy } = this.props;
 
         const options: IQuickeyOptions = {
+            id,
             title,
             actions,
             onDestroy
