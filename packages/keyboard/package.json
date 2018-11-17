@@ -1,6 +1,6 @@
 {
   "name": "@quickey/keyboard",
-  "version": "0.0.3-alpha.0",
+  "version": "0.0.4-alpha.0",
   "description": "Keyboard events as streams",
   "author": "Udi Talias <udi.talias@gmail.com>",
   "homepage": "https://github.com/quickey/quickey#readme",
