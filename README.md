@@ -81,7 +81,7 @@ For your convenience, we created this [**Fiddle**](http://jsfiddle.net/udidu/y6p
 
 ## Packages
 
-Quickey is built a over few independant packages. Each one can be used by installing via the npm or by importing the UMD module from the CDN.  
+Quickey is built over a few independant packages. Each one can be used by installing via the npm or by importing the UMD module from the CDN.  
 Each package has its own documentations, explore the list of packages below.
 
 ### Lib ⚙️
