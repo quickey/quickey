@@ -114,6 +114,7 @@ Please make sure to update tests as appropriate.
 
 ## Todo
 
+- [x] Give Quickey a Star!
 - [ ] Finish documentations for all packages
 - [ ] Add more UI elements to [@quickey/ui](./packages/ui/README.md)
 
