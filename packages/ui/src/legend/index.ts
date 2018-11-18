@@ -14,7 +14,7 @@ export interface IQuickeyLegendOptions {
 export function createQuickeyLegend(options: IQuickeyLegendOptions): () => void {
     options = Object.assign({}, {
         title: "Keyboard Shortcuts",
-        searchBarPlaceholder: "Search shortcut...",
+        searchBarPlaceholder: "Search for shortcut...",
         showCredits: true,
         style: {}
     }, options);
