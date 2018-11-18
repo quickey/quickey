@@ -117,6 +117,8 @@ Please make sure to update tests as appropriate.
 - [x] Give Quickey a Star and become a Stargazer!
 - [ ] Finish documentations for all packages
 - [ ] Add more UI elements to [@quickey/ui](./packages/ui/README.md)
+- [ ] Create the `@quickey/vue` package
+- [ ] Create the `@quickey/angular` package
 
 ## License
 
