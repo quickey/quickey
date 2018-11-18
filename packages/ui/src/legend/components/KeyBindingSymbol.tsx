@@ -9,8 +9,6 @@ export interface IKeyBindingSymbolProps {
     type: number;
 }
 
-export default function KeyBindingSymbol(props: IKeyBindingSymbolProps) {
-    return (
-        <span className="quickey-key-binding-symbol">{BINDING_TYPE_SYMBOLS[props.type]}</span>
-    );
-}
+export default (props: IKeyBindingSymbolProps) => (
+    <span className="quickey-key-binding-symbol">{BINDING_TYPE_SYMBOLS[props.type]}</span>
+);

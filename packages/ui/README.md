@@ -48,6 +48,10 @@ Or, if you're using a bundler (like webpack) with sass-loader, you can import th
 import "@quickey/ui/lib/legend/styles/legend.scss";
 ```
 
+## Peer Dependencies
+
+You should install [@quickey/core](../core) in order to use this package.
+
 ## Usage
 
 ```javascript

@@ -21,6 +21,12 @@ const base = {
             commonjs2: 'react',
             commonjs: 'react',
             amd: 'react'
+        },
+        "@quickey/core": {
+            root: ['Quickey', 'core'],
+            commonjs2: '@quickey/core',
+            commonjs: '@quickey/core',
+            amd: '@quickey/core'
         }
     }
 }

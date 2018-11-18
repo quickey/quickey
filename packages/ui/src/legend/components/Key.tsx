@@ -7,11 +7,9 @@ export interface IKeyProps {
     type: number;
 }
 
-export default function Key(props: IKeyProps) {
-    return (
-        <div className="quickey-key-wrapper">
-            <div className="quickey-key">{props.keyName}</div>
-            <KeyBindingSymbol type={props.type} />
-        </div>
-    );
-}
+export default (props: IKeyProps) => (
+    <div className="quickey-key-wrapper">
+        <div className="quickey-key">{props.keyName}</div>
+        <KeyBindingSymbol type={props.type} />
+    </div>
+);
