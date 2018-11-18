@@ -112,6 +112,11 @@ For more information about monorepos, checkout [Lerna](https://github.com/lerna/
 
 Please make sure to update tests as appropriate.
 
+## Todo
+
+- [ ] Finish documentations for all packages
+- [ ] Add more UI elements to [@quickey/ui](./packages/ui/README.md)
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
