@@ -42,7 +42,7 @@ Use the CDN:
 <script src="https://unpkg.com/@quickey/ui@latest/umd/quickey.css"></script>
 ```
 
-Or, if you're using a bundler with sass-loader, you can just import the style you want.
+Or, if you're using a bundler (like webpack) with sass-loader, you can import the element style directly.
 
 ```javascript
 import "@quickey/ui/lib/legend/styles/legend.scss";
