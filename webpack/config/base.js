@@ -24,7 +24,6 @@ module.exports = (config = {
                     options: {
                         configFile: "../tsconfig.json",
                         compilerOptions: {
-                            target: "es5",
                             declaration: false
                         }
                     }

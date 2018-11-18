@@ -4,7 +4,7 @@
   "scripts": {
     "test": "lerna run test",
     "test:watch": "lerna run test:watch --stream --parallel",
-    "release": "npm run build && lerna publish",
+    "release": "npm run build && lerna publish --force-publish",
     "tsc": "lerna run tsc",
     "tsc:watch": "lerna run tsc:watch --parallel",
     "clean": "lerna exec rimraf lib/ umd/",
