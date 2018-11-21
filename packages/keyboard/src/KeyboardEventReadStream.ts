@@ -58,7 +58,7 @@ export default class KeyboardEventReadStream {
     }
 
     private _onEvent = (e: KeyboardEvent) => {
-        if (!this._writers.length) {
+        if (!this._writers.length || e.key.toLowerCase() === "dead") {
             return;
         }
 
