@@ -1,6 +1,6 @@
 {
   "name": "@quickey/ui",
-  "version": "0.0.8-alpha.0",
+  "version": "0.0.9-alpha.0",
   "description": "Quickey UI elements",
   "author": "Udi Talias <udi.talias@gmail.com>",
   "homepage": "https://github.com/quickey/quickey#readme",
@@ -36,7 +36,7 @@
     "@quickey/core": "^0.0.7-alpha.0"
   },
   "devDependencies": {
-    "@quickey/core": "^0.0.8-alpha.0",
+    "@quickey/core": "^0.0.9-alpha.0",
     "css-loader": "1.0.1",
     "gulp": "3.9.1",
     "gulp-plumber": "^1.2.0",
