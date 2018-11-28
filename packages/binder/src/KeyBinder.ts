@@ -49,6 +49,7 @@ export default class KeyBinder {
 
     public bind = (keyBindingOptions: Partial<IKeyBinding>): IKeyBinding => {
         const keyBinding = prepareKeyBinding(keyBindingOptions);
+
         this._bindings.set(keyBinding.id, keyBinding);
 
         return keyBinding;
@@ -74,14 +75,26 @@ export default class KeyBinder {
     }
 
     private _checkBinding(input: IKeyboardInput, keyBinding: IKeyBinding): boolean {
+        let bindingActivated = false;
+
         switch (keyBinding.type) {
             case KeyBindingType.Combination:
-                return this._checkCombinationBinding(input, keyBinding);
+                bindingActivated = this._checkCombinationBinding(input, keyBinding);
+                break;
             case KeyBindingType.Stream:
-                return this._checkStreamBinding(input, keyBinding);
+                bindingActivated = this._checkStreamBinding(input, keyBinding);
+                break;
+            case KeyBindingType.Single:
+                bindingActivated = this._checkSingleBinding(input, keyBinding);
+                break;
         }
 
-        return false;
+        if (keyBinding.alias && !bindingActivated) {
+            bindingActivated = keyBinding.alias
+                .filter((alias: IKeyBinding) => this._checkBinding(input, alias)).length > 0;
+        }
+
+        return bindingActivated;
     }
 
     private _checkCombinationBinding(input: IKeyboardInput, keyBinding: IKeyBinding): boolean {
@@ -121,6 +134,18 @@ export default class KeyBinder {
         }
 
         return false;
+    }
+
+    private _checkSingleBinding(input: IKeyboardInput, keyBinding: IKeyBinding): boolean {
+        const isMatchKey = this._isInputMatchKey(input, keyBinding.parts[0]);
+
+        return every<boolean>([
+            isMatchKey,
+
+            keyBinding.strict
+                ? this._keyboard.activeKeys === 1
+                : true
+        ]);
     }
 
     private _resetBinding(keyBinding: IKeyBinding) {

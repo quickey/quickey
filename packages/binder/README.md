@@ -54,6 +54,10 @@ keyBinder.bind({
 keyBinder.bind({
   keys: "Ctrl + H"
 });
+
+keyBinder.bind({
+  keys: "J"
+});
 ```
 
 For your convenience, we created this [**Fiddle**](https://jsfiddle.net/udidu/1a56thy9/19/), so you can take Quickey Binder for a quick spin.
@@ -132,8 +136,16 @@ For **Combination** binding (hold them together to activate) create a list of ke
 For **Stream** binding (enter one after another to activate) create a list of keys separated with the `>` sign. For example:  
 `I > D > D > Q > D`, `Ctrl > Ctrl`, `H > E > L > L > O`
 
+For **Single** binding (enter one key) supply the key you want to bind to. For example:  
+`J`, `F`, `K`
+
 See [this list](/packages/binder/src/constants.ts) for uniqe key options.
 
+###### alias
+
+Type: `Array` - optional
+
+You can supply a list of `keyBindingOptions` to the alias option to create aliases with this binding.
 
 ###### delay
 
@@ -146,11 +158,12 @@ The delay between key strokes when using Stream bindings.
 Type: `boolean`
 
 In Combination bindings, strict mode will activate only if the binded keys are the only active keys in the keyboard.  
-In Stream bindings, each key must be released before the next one is active.
+In Stream bindings, each key must be released before the next one is active.  
+In Single bindings, only one key must to be active.
 
 #
 
-#### .bind([keyBindingId])
+#### .unbind([keyBindingId])
 
 Unsubscribe from key binding.
 

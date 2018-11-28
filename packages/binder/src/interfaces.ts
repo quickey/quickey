@@ -3,6 +3,7 @@ import { KeyBindingType } from "./enums";
 export interface IKeyBinding {
     id?: string;
     keys: string;
+    alias?: Partial<IKeyBinding>[];
     delay?: number;
     strict?: boolean;
     sequence: number,

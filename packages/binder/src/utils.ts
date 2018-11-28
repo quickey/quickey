@@ -4,7 +4,7 @@ import { KeyBindingType } from "./enums";
 
 class KeyBinderError extends TypeError { }
 
-export function prepareKeyBinding(opts): IKeyBinding {
+export function prepareKeyBinding(opts: Partial<IKeyBinding>): IKeyBinding {
     const dto: any = {
         id: opts.id || guid(),
         keys: opts.keys.trim().toUpperCase(),
@@ -18,7 +18,7 @@ export function prepareKeyBinding(opts): IKeyBinding {
     const connectionParts = dto.keys.split(/ \+ /);
 
     if (streamParts.length > 1 && connectionParts.length > 1) {
-        throw new KeyBinderError("only one type is allowed for binding (use '>' or '+')");
+        throw new KeyBinderError("only one type is allowed for binding (use '>' or '+'), use `alias` option.");
     }
 
     if (streamParts.length > 1) {
@@ -28,7 +28,12 @@ export function prepareKeyBinding(opts): IKeyBinding {
         dto.type = KeyBindingType.Combination;
         dto.parts = connectionParts;
     } else {
-        throw new KeyBinderError("can't create binding with one key");
+        dto.type = KeyBindingType.Single;
+        dto.parts = [dto.keys];
+    }
+
+    if (opts.alias) {
+        dto.alias = opts.alias.map((alias) => prepareKeyBinding(alias));
     }
 
     return dto as IKeyBinding;

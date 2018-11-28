@@ -1,4 +1,5 @@
 export enum KeyBindingType {
     Stream = 1,
-    Combination
+    Combination,
+    Single
 }
