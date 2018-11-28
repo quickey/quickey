@@ -4,16 +4,13 @@
     align-items: center;
 
     .quickey-action-parts {
-        display: flex;
+        display: inline-flex;
         align-items: center;
     }
 
     .quickey-action-description {
         font-size: 14px;
         letter-spacing: .5px;
-    }
-
-    .quickey-action-parts + .quickey-action-description {
         margin-left: 7px;
     }
 }

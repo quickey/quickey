@@ -10,5 +10,7 @@ export interface IKeyBindingSymbolProps {
 }
 
 export default (props: IKeyBindingSymbolProps) => (
-    <span className="quickey-key-binding-symbol">{BINDING_TYPE_SYMBOLS[props.type]}</span>
+    BINDING_TYPE_SYMBOLS[props.type]
+        ? <span className="quickey-key-binding-symbol">{BINDING_TYPE_SYMBOLS[props.type]}</span>
+        : null
 );

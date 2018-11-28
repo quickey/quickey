@@ -7,11 +7,19 @@ export interface IQuickeyActionProps {
     action: IAction;
 }
 
+const renderActionParts = (action: IAction) => (
+    <div className="quickey-action-parts">
+        {action.parts.map((k, i) => renderKey(k, action.type, i))}
+    </div>
+);
+const renderKey = (k: string, type: number, index: number) => <Key key={index} keyName={k} type={type} />;
+
 export default (props: IQuickeyActionProps) => (
     <div className="quickey-action">
-        <div className="quickey-action-parts">
-            {props.action.parts.map((k, i) => <Key key={i} keyName={k} type={props.action.type} />)}
-        </div>
+        {renderActionParts(props.action)}
+        {props.action.alias ? props.action.alias.map((a, i) =>
+            <span>, {renderActionParts(a)}</span>
+        ) : null}
         <div className="quickey-action-description">
             {props.action.description}
         </div>
