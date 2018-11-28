@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="quickey" src="https://raw.githubusercontent.com/quickey/quickey/master/assets/keyboard.png"/>
+    <img alt="quickey" src="https://raw.githubusercontent.com/quickey/quickey/master/assets/keyboard_cropped.png"/>
 </p>
 <h2 align="center">
 ⚡️Quickey creates keyboard shortcuts for your web apps
