@@ -126,9 +126,11 @@ createQuickey({
     })
     .addAction({
         keys: "Ctrl + Q",
+        strict: true,
+        alias: [{ keys: "K", strict: true }, { keys: "Ctrl + J", strict: true }],
         description: "Exit game",
         callback: (_, target: HTMLElement) => {
-
+            console.log(123);
         }
     })
 

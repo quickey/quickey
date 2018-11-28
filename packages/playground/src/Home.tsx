@@ -53,7 +53,7 @@ export default class Home extends React.Component<IHomeProps, IHomeState> {
             <QuickeyContext
                 global={true}
                 actions={[
-                    { keys: "I > D > D > Q > D", callback: this.onGodMode },
+                    { keys: "I > D > D > Q > D", alias: [{ keys: "J" }], callback: this.onGodMode },
                     { keys: "I > D > K > F > A", callback: this.onFullInventory }
                 ]}
             >
