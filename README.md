@@ -115,7 +115,9 @@ Please make sure to update tests as appropriate.
 ## Todo
 
 - [x] Give Quickey a Star and become a Stargazer!
-- [ ] Finish documentations for all packages
+- [x] Add alias to key binding
+- [x] Support single key binding
+- [x] Finish documentations for all packages
 - [ ] Add more UI elements to [@quickey/ui](./packages/ui/README.md)
 - [ ] Create the `@quickey/vue` package
 - [ ] Create the `@quickey/angular` package
