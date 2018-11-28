@@ -10,9 +10,10 @@ export interface IActionOptions extends Pick<IKeyBinding, Exclude<keyof IKeyBind
     callback: ActionCallback;
 }
 
-export interface IAction extends Pick<IActionOptions, Exclude<keyof IActionOptions, "strict" | "delay" | "keys">> {
+export interface IAction extends Pick<IActionOptions, Exclude<keyof IActionOptions, "strict" | "delay" | "keys" | "alias">> {
     type: KeyBindingType;
     parts: string[];
+    alias?: IAction[];
 }
 
 export interface IQuickeyOptions {
@@ -70,11 +71,12 @@ export default class Quickey extends PubSub implements IKeyBinderDelegate {
 
         for (const action of actionOrActions) {
             const id = action.id || guid();
-            const { keys, delay, strict, callback, description = "" } = action;
+            const { keys, delay, strict, callback, alias, description = "" } = action;
 
-            const { parts, type } = this._keyBinder.bind({
+            const { parts, type, alias: binderAlias = [] } = this._keyBinder.bind({
                 id,
                 keys,
+                alias,
                 delay,
                 strict
             });
@@ -82,6 +84,7 @@ export default class Quickey extends PubSub implements IKeyBinderDelegate {
             this._actions.set(id, {
                 id,
                 type,
+                alias: binderAlias.map<IAction>((a) => ({ id: a.id, type: a.type, parts: a.parts, callback })),
                 parts,
                 callback,
                 description

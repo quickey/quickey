@@ -44,6 +44,7 @@ const quickey = createQuickey();
 const { id } = quickey
     .addAction({
         keys: "I > D > D > Q > D",
+        alias: [{ keys: 'Ctrl + G' }],
         callback: (keyBinding, target) => {
             console.log("GOD Mode!");
         }
@@ -130,8 +131,16 @@ For **Combination** binding (hold them together to activate) create a list of ke
 For **Stream** binding (enter one after another to activate) create a list of keys separated with the `>` sign. For example:  
 `I > D > D > Q > D`, `Ctrl > Ctrl`, `H > E > L > L > O`
 
+For **Single** binding (enter one key) supply the key you want to bind to. For example:  
+`J`, `F`, `K`
+
 See [this list](/packages/binder/src/constants.ts) for uniqe key options.
 
+###### alias
+
+Type: `Array` - optional
+
+You can supply a list of `options` to the alias option to create aliases with this action.
 
 ###### delay
 
