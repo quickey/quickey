@@ -66,6 +66,7 @@ const quickey = createQuickey();
 const { id } = quickey
     .addAction({
         keys: "I > D > D > Q > D",
+        alias: [{ keys: 'Ctrl + G' }],
         callback: (keyBinding, target) => {
             console.log("GOD Mode!");
         }
@@ -77,7 +78,7 @@ quickey
 ```
 Checkout [@quickey/core](packages/core/README.md) for more options.
 
-For your convenience, we created this [**Fiddle**](http://jsfiddle.net/udidu/y6phe5ok/8/), so you can take Quickey for a quick spin.
+For your convenience, we created this [**Fiddle**](http://jsfiddle.net/udidu/y6phe5ok/9/), so you can take Quickey for a quick spin.
 
 ## Packages
 
@@ -100,7 +101,7 @@ Each package has its own documentations, explore the list of packages below.
 We use GitHub Issues as the official bug tracker for Quickey. Here are some advices for our users that want to report an issue:
 
 1. Make sure that you are using the latest version of Quickey. The issue that you are about to report may be already fixed in the latest master branch version: https://github.com/quickey/quickey/tree/master.
-2. Providing us reproducible steps for the issue will shorten the time it takes for it to be fixed. A JSFiddle is always welcomed, and you can start from this [basic one](http://jsfiddle.net/udidu/y6phe5ok/8/).
+2. Providing us reproducible steps for the issue will shorten the time it takes for it to be fixed. A JSFiddle is always welcomed, and you can start from this [basic one](http://jsfiddle.net/udidu/y6phe5ok/9/).
 3. Some issues may be browser specific, so specifying in what browser you encountered the issue might help.
 
 ## Contributions

@@ -55,7 +55,7 @@ quickey
     .removeAction(id);
 ```
 
-For your convenience, we created this [**Fiddle**](http://jsfiddle.net/udidu/y6phe5ok/8/), so you can take Quickey for a quick spin.
+For your convenience, we created this [**Fiddle**](http://jsfiddle.net/udidu/y6phe5ok/9/), so you can take Quickey for a quick spin.
 
 ## API
 
