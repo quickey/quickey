@@ -80,20 +80,6 @@ Returns: `KeyboardEventReadStream`
 
 #
 
-#### .createEventReadStream([event])
-
-Create event stream.
-
-##### event
-
-Type: `string`
-
-Can be any keyboard event name (e.g. `keyup`, `keydown`).
-
-Returns: `KeyboardEventReadStream`
-
-#
-
 #### .isKeyActive([key])
 
 Checks if a key is active (pressed down).
@@ -138,9 +124,7 @@ Get the number of active keys.
 
 ### KeyboardEventReadStream
 
-#### KeyboardEventReadStream([event,target])
-
-Type: `constructor`
+#### KeyboardEventReadStream.createByEvent([event,target?])
 
 Creates a new KeyboardEventReadStream.
 
@@ -150,9 +134,11 @@ Type: `string`
 
 Can be any keyboard event name (e.g. `keyup`, `keydown`).
 
-##### target
+##### target?
 
 Type: `EventTarget`
+
+Default: `document`
 
 The stream target.
 

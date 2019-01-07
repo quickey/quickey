@@ -9,7 +9,11 @@ export default class KeyboardEventReadStream {
     private _tabIndexAttached: boolean;
     private readonly _writers: KeyboardEventWriteStream[];
 
-    constructor(private _event: string, private _target: EventTarget = document) {
+    public static createByEvent(event: string, target?: EventTarget): KeyboardEventReadStream {
+        return new KeyboardEventReadStream(event, target);
+    }
+
+    private constructor(private _event: string, private _target: EventTarget = document) {
         this._isOpen = true;
         this._writers = [];
 

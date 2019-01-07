@@ -131,6 +131,7 @@ createQuickey({
         description: "Exit game",
         callback: (_, target: HTMLElement) => {
             console.log(123);
+            alert(1)
         }
     })
 

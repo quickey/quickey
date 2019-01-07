@@ -29,6 +29,9 @@
     "test:watch": "jest --watch --color",
     "build:umd": "webpack"
   },
+  "dependencies": {
+    "@quickey/shared": "^1.0.0"
+  },
   "bugs": {
     "url": "https://github.com/quickey/quickey/issues"
   }
