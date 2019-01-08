@@ -25,7 +25,7 @@ export default class ThreadPauseObserver {
 
     public observe() {
         this.disconnect();
-        this._setThreadTimeWatcher();
+        this._setNextWatcher();
     }
 
     public disconnect() {
@@ -33,7 +33,7 @@ export default class ThreadPauseObserver {
         this._threadTimeWatcher = null;
     }
 
-    private _setThreadTimeWatcher() {
+    private _setNextWatcher() {
         this._threadTimeWatcher = setTimeout(() => {
 
             const now = performance.now();
@@ -44,7 +44,7 @@ export default class ThreadPauseObserver {
 
             this._lastPerformanceTime = now;
 
-            this._setThreadTimeWatcher();
+            this._setNextWatcher();
         }, THREAD_TIME_MS);
     }
 
