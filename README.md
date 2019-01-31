@@ -63,8 +63,9 @@ const createQuickey = Quickey.core.createQuickey;
 const quickey = createQuickey();
 
 // Adding actions to your quickey is simple as
-const { id } = quickey
+quickey
     .addAction({
+        id: "god",
         keys: "I > D > D > Q > D",
         alias: [{ keys: 'Ctrl + G' }],
         callback: (keyBinding, target) => {
@@ -74,7 +75,7 @@ const { id } = quickey
 
 // Remove action
 quickey
-    .removeAction(id);
+    .removeAction("god");
 ```
 Checkout [@quickey/core](packages/core/README.md) for more options.
 
