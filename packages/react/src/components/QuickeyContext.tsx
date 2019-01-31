@@ -1,6 +1,5 @@
 import * as React from "react";
-import { createQuickey, IQuickeyOptions } from "@quickey/core";
-import Quickey, { IActionOptions } from "@quickey/core/lib/Quickey";
+import { createQuickey, IQuickeyOptions, ActionCallback, Quickey, IActionOptions } from "@quickey/core";
 
 export interface IQuickeyContextProps extends Pick<IQuickeyOptions, Exclude<keyof IQuickeyOptions, "target">>, React.HTMLAttributes<HTMLElement> {
     type?: string;
@@ -58,8 +57,14 @@ export default class QuickeyContext extends React.Component<IQuickeyContextProps
         this._quickey.removeAction(actionId);
     }
 
-    public addAction(actionOrActions: IActionOptions | IActionOptions[]) {
-        this._quickey.addAction(actionOrActions);
+    public addAction(actionOrActions: IActionOptions | IActionOptions[]);
+    public addAction(keys: string, callback: ActionCallback);
+    public addAction(actionOrKeys: IActionOptions | IActionOptions[] | string, callback?: ActionCallback): void {
+        if (typeof actionOrKeys === "string") {
+            this._quickey.addAction(actionOrKeys, callback);
+        } else {
+            this._quickey.addAction(actionOrKeys);
+        }
     }
 
     public render(): React.ReactNode {

@@ -85,6 +85,53 @@ describe('Quickey', () => {
         expect(actionCallback).toHaveBeenCalledTimes(0);
     });
 
+    it('should addAction by single action', () => {
+        quickey = new Quickey();
+
+        const id = "action1";
+
+        quickey
+            .addAction({
+                id,
+                keys: "Ctrl + 1",
+                callback: () => { }
+            });
+
+        expect(quickey.getAction(id)).toBeDefined();
+    });
+
+    it('should addAction by array of actions', () => {
+        quickey = new Quickey();
+
+        const id1 = "action1";
+        const id2 = "action2";
+
+        quickey
+            .addAction([{
+                id: id1,
+                keys: "Ctrl + 1",
+                callback: () => { }
+            }, {
+                id: id2,
+                keys: "Ctrl + 2",
+                callback: () => { }
+            }]);
+
+        expect(quickey.getAction(id1)).toBeDefined();
+        expect(quickey.getAction(id2)).toBeDefined();
+    });
+
+    it('should addAction by keys and callback', () => {
+        quickey = new Quickey();
+
+        const callback = jest.fn();
+
+        quickey.addAction("Ctrl + 1", callback);
+
+        expect(quickey.actions.length).toBe(1);
+        expect(quickey.actions[0].callback).toBe(callback);
+    });
+
     it('should call subscription when action added', () => {
         const updateSubscription = jest.fn();
 

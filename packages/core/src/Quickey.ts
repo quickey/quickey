@@ -44,6 +44,7 @@ export default class Quickey extends PubSub implements IKeyBinderDelegate {
         });
         this._keyBinder.delegate = this;
         this._onDestroy = options.onDestroy;
+        this.addAction = this.addAction.bind(this);
 
         options.actions.map(this.addAction);
     }
@@ -64,12 +65,21 @@ export default class Quickey extends PubSub implements IKeyBinderDelegate {
         return Array.from(this._actions.values());
     }
 
-    public addAction = (actionOrActions: IActionOptions | IActionOptions[]): Quickey => {
-        if (!(actionOrActions instanceof Array)) {
-            actionOrActions = [actionOrActions];
+    public getAction(actionId: string): IAction {
+        return this._actions.get(actionId);
+    }
+
+    public addAction(actionOrActions: IActionOptions | IActionOptions[]);
+    public addAction(keys: string, callback: ActionCallback);
+    public addAction(actionOrKeys: IActionOptions | IActionOptions[] | string, callback?: ActionCallback): Quickey {
+
+        if (typeof actionOrKeys === "string") {
+            actionOrKeys = [{ keys: actionOrKeys, callback }];
+        } else if (!(actionOrKeys instanceof Array)) {
+            actionOrKeys = [actionOrKeys];
         }
 
-        for (const action of actionOrActions) {
+        for (const action of actionOrKeys) {
             const id = action.id || guid();
             const { keys, delay, strict, callback, alias, description = "" } = action;
 
