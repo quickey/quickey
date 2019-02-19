@@ -14,7 +14,7 @@
 <a href="https://twitter.com/intent/tweet?text=%E2%9A%A1%EF%B8%8FQuickey%20creates%20keyboard%20shortcuts%20for%20your%20web%20app&url=https://github.com/quickey/quickey&via=uditalias&hashtags=javascript,keybinding,shortcuts,developers,webdeveloper">
 <img alt="Tweet" src="https://img.shields.io/badge/tweet-🐦-efefef.svg?maxAge=43200"></a>
 <br/><br/>
-<img alt="Langauge" src="https://www.langauge.io/quickey/quickey">
+<img alt="Langauge" src="https://badge.langauge.io/quickey/quickey">
 </p>
 
 ## Intro
