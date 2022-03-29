@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const package = require('./package.json');
 const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const contextPath = path.join(__dirname, './src');
@@ -92,7 +92,7 @@ const config = {
     },
 
     plugins: [
-        new CleanWebpackPlugin([destinationDir]),
+        new CleanWebpackPlugin(),
         new webpack.optimize.ModuleConcatenationPlugin(),
         new HtmlWebpackPlugin({
             template: './index.html'

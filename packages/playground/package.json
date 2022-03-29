@@ -14,27 +14,27 @@
     "url": "https://github.com/quickey/quickey/issues"
   },
   "scripts": {
-    "start": "NODE_ENV=development webpack-dev-server --watch --open"
+    "start": "NODE_ENV=development webpack-dev-server"
   },
   "dependencies": {
     "@quickey/core": "^1.1.3",
     "@quickey/react": "^1.1.3",
     "@quickey/ui": "^1.1.3",
-    "react": "16.6.0",
-    "react-dom": "16.6.0"
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "@types/react": "16.4.18",
-    "@types/webpack-env": "1.13.6",
-    "clean-webpack-plugin": "0.1.19",
-    "css-loader": "1.0.1",
-    "html-webpack-plugin": "3.2.0",
-    "node-sass": "4.14.1",
-    "sass-loader": "7.1.0",
-    "style-loader": "0.23.1",
-    "ts-loader": "5.2.2",
-    "webpack": "4.20.2",
-    "webpack-cli": "3.1.2",
-    "webpack-dev-server": "3.1.14"
+    "@types/react": "17.0.43",
+    "@types/webpack-env": "1.16.3",
+    "clean-webpack-plugin": "4.0.0",
+    "css-loader": "6.7.1",
+    "html-webpack-plugin": "5.5.0",
+    "node-sass": "7.0.1",
+    "sass-loader": "12.6.0",
+    "style-loader": "3.3.1",
+    "ts-loader": "9.2.8",
+    "webpack": "5.70.0",
+    "webpack-cli": "4.9.2",
+    "webpack-dev-server": "4.7.4"
   }
 }

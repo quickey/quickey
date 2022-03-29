@@ -2,7 +2,7 @@ const webpack = require("webpack");
 const merge = require("webpack-merge");
 const base = require("./base");
 
-module.exports = (config = {}) => merge(base(config), {
+module.exports = (config = {}) => merge.merge(base(config), {
     mode: "production",
 
     plugins: [

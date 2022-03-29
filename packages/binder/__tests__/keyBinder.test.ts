@@ -40,7 +40,7 @@ describe('KeyBinder', () => {
     });
 
     describe('stream binding', () => {
-        it('should activate action when stream binding recorded', async (done) => {
+        it('should activate action when stream binding recorded', async () => {
 
             keyBinder = new KeyBinder();
 
@@ -56,11 +56,9 @@ describe('KeyBinder', () => {
                 .forEach((eventParams) => simulateKeyPress(eventParams));
 
             expect(keyBinder.delegate.didMatchFound).toBeCalledTimes(1);
-
-            done();
         });
 
-        it('should not activate action when key delay is too long', async (done) => {
+        it('should not activate action when key delay is too long', async () => {
             keyBinder = new KeyBinder();
 
             keyBinder.delegate = {
@@ -74,7 +72,7 @@ describe('KeyBinder', () => {
             });
 
             await Promise.all([{ which: 73, key: "i" }, { which: 68, key: "d" }, { which: 68, key: "d" }, { which: 81, key: "q" }, { which: 68, key: "d" }].map((eventParams, i) => {
-                return new Promise((resolve) => {
+                return new Promise<void>((resolve) => {
                     setTimeout(() => {
                         simulateKeyPress(eventParams);
                         resolve();
@@ -83,8 +81,6 @@ describe('KeyBinder', () => {
             }));
 
             expect(keyBinder.delegate.didMatchFound).toBeCalledTimes(0);
-
-            done();
         });
     });
 

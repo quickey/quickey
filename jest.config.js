@@ -1,6 +1,7 @@
 module.exports = {
   clearMocks: true,
   coverageDirectory: 'coverage',
+  testEnvironment: 'jsdom',
   globals: {
     'ts-jest': {
       tsConfig: 'tsconfig.json',

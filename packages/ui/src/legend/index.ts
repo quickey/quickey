@@ -19,7 +19,7 @@ export function createQuickeyLegend(options: IQuickeyLegendOptions): () => void 
         style: {}
     }, options);
 
-    const root = render(h(QuickeyLegend, {
+    render(h(QuickeyLegend, {
         quickeys: getQuickeyInstance(options.ids),
         title: options.title,
         showCredits: options.showCredits,
@@ -27,5 +27,5 @@ export function createQuickeyLegend(options: IQuickeyLegendOptions): () => void 
         searchBarPlaceholder: options.searchBarPlaceholder
     }), options.el);
 
-    return () => render("", options.el, root);
+    return () => render("", options.el);
 }

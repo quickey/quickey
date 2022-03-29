@@ -1,5 +1,5 @@
 const webpack = require("webpack");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = (config = {
     destDir: "",
@@ -39,8 +39,12 @@ module.exports = (config = {
 
         plugins: [
             new webpack.ProgressPlugin(),
-            new CleanWebpackPlugin([config.destDir], {
-                allowExternal: true
+            new CleanWebpackPlugin({
+                dry: true,
+                dangerouslyAllowCleanPatternsOutsideProject: true,
+                cleanOnceBeforeBuildPatterns: [
+                    config.destDir
+                ]
             }),
             new webpack.optimize.ModuleConcatenationPlugin()
         ]

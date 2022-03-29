@@ -32,13 +32,13 @@ const base = {
 }
 
 module.exports = [
-    merge(dev({ destDir, contextPath }), base, {
+    merge.merge(dev({ destDir, contextPath }), base, {
         output: {
             filename: 'quickey.react.js'
         }
     }),
 
-    merge(prod({ destDir, contextPath }), base, {
+    merge.merge(prod({ destDir, contextPath }), base, {
         output: {
             filename: 'quickey.react.min.js'
         }

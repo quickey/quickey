@@ -25,9 +25,9 @@ gulp.task('scss', function () {
         .pipe(gulp.dest('./lib'));
 });
 
-gulp.task('default', ['ts', 'scss']);
+gulp.task('default', gulp.parallel('ts', 'scss'));
 
-gulp.task('watch', ['ts', 'scss'], function () {
+gulp.task('watch', gulp.parallel('ts', 'scss', function () {
     return merge([
         watch(typescriptFiles, function () {
             return gulp.run('ts');
@@ -36,4 +36,4 @@ gulp.task('watch', ['ts', 'scss'], function () {
             return gulp.run('scss');
         })
     ]);
-});
+}));

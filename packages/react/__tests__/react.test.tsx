@@ -2,7 +2,7 @@
 import * as React from "react";
 import { QuickeyContext } from "../src";
 import { configure, shallow, mount, render } from 'enzyme';
-import * as Adapter from "enzyme-adapter-react-16";
+import * as Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
 configure({ adapter: new Adapter() });
 
