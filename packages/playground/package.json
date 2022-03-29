@@ -1,6 +1,6 @@
 {
   "name": "playground",
-  "version": "1.1.3",
+  "version": "1.2.0",
   "private": true,
   "description": "Quickey playground",
   "author": "Udi Talias <udi.talias@gmail.com>",
@@ -17,9 +17,9 @@
     "start": "NODE_ENV=development webpack-dev-server"
   },
   "dependencies": {
-    "@quickey/core": "^1.1.3",
-    "@quickey/react": "^1.1.3",
-    "@quickey/ui": "^1.1.3",
+    "@quickey/core": "^1.2.0",
+    "@quickey/react": "^1.2.0",
+    "@quickey/ui": "^1.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
