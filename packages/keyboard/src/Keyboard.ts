@@ -75,7 +75,7 @@ export default class Keyboard implements IThreadPauseObserverDelegate {
     }
 
     private _onKeyDown = (input: IKeyboardInput) => {
-        if (this.isKeyActive(input.key)) {
+        if (this.isKeyActive(input.key) && !this.isKeyActive('meta')) {
             return false;
         }
 
@@ -84,5 +84,12 @@ export default class Keyboard implements IThreadPauseObserverDelegate {
 
     private _onKeyUp = (input: IKeyboardInput) => {
         this._activeKeyRecord.delete(input.key);
+
+        // this is a hack to handle hot keys
+        // when the meta key is down (i.e. CMD), the keyup
+        // event wont trigger for other keys.
+        if (input.key === 'meta') {
+            this._activeKeyRecord.clear();
+        }
     }
 }
